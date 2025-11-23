@@ -3,17 +3,22 @@
 import { useState } from 'react';
 import clsx from 'clsx';
 
+// Google Form configuration
+const GOOGLE_FORM_ACTION_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSdVGJ8LOkIOqKntYJaSWxv_yOlkK0TK40kpu9-46xMqK5TQjg/formResponse';
+const FIELD_IDS = {
+    name: '1374535330',
+    email: '39028199',
+    website: '1969265453',
+    industry: '509278314',
+    userType: '1691041121',
+};
+
 export default function WaitlistForm() {
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        website: '',
-        industry: '',
-        customIndustry: '',
-        userType: 'publisher',
-    });
+    const [selectedIndustry, setSelectedIndustry] = useState('');
+    const [customIndustry, setCustomIndustry] = useState('');
+    const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
-    const [errors, setErrors] = useState<Record<string, string>>({});
+    const [submitError, setSubmitError] = useState('');
 
     const industries = [
         'Technology',
@@ -25,54 +30,46 @@ export default function WaitlistForm() {
         'Other',
     ];
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-        const { name, value } = e.target;
-        setFormData((prev) => ({ ...prev, [name]: value }));
-        // Clear error when user starts typing
-        if (errors[name]) {
-            setErrors((prev) => ({ ...prev, [name]: '' }));
-        }
-    };
-
-    const validateForm = () => {
-        const newErrors: Record<string, string> = {};
-
-        if (!formData.name.trim()) newErrors.name = 'Name is required';
-        if (!formData.email.trim()) {
-            newErrors.email = 'Email is required';
-        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-            newErrors.email = 'Invalid email format';
-        }
-        if (!formData.website.trim()) newErrors.website = 'Website is required';
-        if (!formData.industry) newErrors.industry = 'Industry is required';
-        if (formData.industry === 'Other' && !formData.customIndustry.trim()) {
-            newErrors.customIndustry = 'Please specify your industry';
-        }
-
-        setErrors(newErrors);
-        return Object.keys(newErrors).length === 0;
-    };
-
-    const handleSubmit = (e: React.FormEvent) => {
+    const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        setIsSubmitting(true);
+        setSubmitError('');
 
-        if (validateForm()) {
-            // Here you would typically send data to your backend
-            console.log('Form submitted:', formData);
+        try {
+            const formData = new FormData(e.currentTarget);
+
+            // Create URLSearchParams for Google Forms submission
+            const params = new URLSearchParams();
+            params.append(`entry.${FIELD_IDS.name}`, formData.get('name') as string);
+            params.append(`entry.${FIELD_IDS.email}`, formData.get('email') as string);
+            params.append(`entry.${FIELD_IDS.website}`, formData.get('website') as string);
+
+            // Handle industry field - append custom industry if "Other" is selected
+            const industry = formData.get('industry') as string;
+            if (industry === 'Other' && customIndustry) {
+                params.append(`entry.${FIELD_IDS.industry}`, `Other: ${customIndustry}`);
+            } else {
+                params.append(`entry.${FIELD_IDS.industry}`, industry);
+            }
+
+            params.append(`entry.${FIELD_IDS.userType}`, formData.get('userType') as string);
+
+            // Submit to Google Forms using no-cors mode
+            await fetch(GOOGLE_FORM_ACTION_URL, {
+                method: 'POST',
+                body: params,
+                mode: 'no-cors',
+            });
+
+            // If we get here, assume success (no-cors doesn't return response)
             setIsSubmitted(true);
-
-            // Reset form after 5 seconds
-            setTimeout(() => {
-                setIsSubmitted(false);
-                setFormData({
-                    name: '',
-                    email: '',
-                    website: '',
-                    industry: '',
-                    customIndustry: '',
-                    userType: 'publisher',
-                });
-            }, 5000);
+            setCustomIndustry('');
+            setSelectedIndustry('');
+        } catch (error) {
+            console.error('Form submission error:', error);
+            setSubmitError('Failed to submit form. Please try again.');
+        } finally {
+            setIsSubmitting(false);
         }
     };
 
@@ -101,143 +98,159 @@ export default function WaitlistForm() {
     }
 
     return (
-        <form onSubmit={handleSubmit} className="glass-effect rounded-2xl p-8 space-y-6">
+        <form onSubmit={onSubmit} className="glass-effect rounded-2xl p-8 md:p-10 space-y-8 shadow-2xl">
+            {/* Form Header */}
+            <div className="text-center pb-4 border-b border-white/10">
+                <h3 className="text-2xl font-bold text-white mb-2">Get Started Today</h3>
+                <p className="text-gray-400">Fill out the form below to secure your spot</p>
+            </div>
+
+            {submitError && (
+                <div className="bg-red-500/10 border border-red-500/50 rounded-xl p-4 text-red-400 text-sm">
+                    {submitError}
+                </div>
+            )}
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Name */}
-                <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
-                        Name *
+                <div className="group">
+                    <label htmlFor="name" className="block text-sm font-semibold text-gray-300 mb-2.5">
+                        Full Name *
                     </label>
-                    <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        className={clsx(
-                            'w-full px-4 py-3 bg-white/5 border rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 transition-all',
-                            errors.name ? 'border-red-500 focus:ring-red-500' : 'border-white/10 focus:ring-primary-500'
-                        )}
-                        placeholder="John Doe"
-                    />
-                    {errors.name && <p className="mt-1 text-sm text-red-500">{errors.name}</p>}
+                    <div className="relative">
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            required
+                            className="w-full px-4 py-3.5 bg-white/5 border border-white/20 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-transparent focus:bg-white/10 transition-all duration-200 hover:bg-white/10"
+                            placeholder="John Doe"
+                        />
+                    </div>
                 </div>
 
                 {/* Email */}
-                <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
-                        Email *
+                <div className="group">
+                    <label htmlFor="email" className="block text-sm font-semibold text-gray-300 mb-2.5">
+                        Email Address *
                     </label>
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        className={clsx(
-                            'w-full px-4 py-3 bg-white/5 border rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 transition-all',
-                            errors.email ? 'border-red-500 focus:ring-red-500' : 'border-white/10 focus:ring-primary-500'
-                        )}
-                        placeholder="john@example.com"
-                    />
-                    {errors.email && <p className="mt-1 text-sm text-red-500">{errors.email}</p>}
+                    <div className="relative">
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            required
+                            className="w-full px-4 py-3.5 bg-white/5 border border-white/20 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-transparent focus:bg-white/10 transition-all duration-200 hover:bg-white/10"
+                            placeholder="john@example.com"
+                        />
+                    </div>
                 </div>
 
                 {/* Website */}
-                <div>
-                    <label htmlFor="website" className="block text-sm font-medium text-gray-300 mb-2">
-                        Website *
+                <div className="group">
+                    <label htmlFor="website" className="block text-sm font-semibold text-gray-300 mb-2.5">
+                        Company Website *
                     </label>
-                    <input
-                        type="url"
-                        id="website"
-                        name="website"
-                        value={formData.website}
-                        onChange={handleChange}
-                        className={clsx(
-                            'w-full px-4 py-3 bg-white/5 border rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 transition-all',
-                            errors.website ? 'border-red-500 focus:ring-red-500' : 'border-white/10 focus:ring-primary-500'
-                        )}
-                        placeholder="https://example.com"
-                    />
-                    {errors.website && <p className="mt-1 text-sm text-red-500">{errors.website}</p>}
+                    <div className="relative">
+                        <input
+                            type="url"
+                            id="website"
+                            name="website"
+                            required
+                            className="w-full px-4 py-3.5 bg-white/5 border border-white/20 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-transparent focus:bg-white/10 transition-all duration-200 hover:bg-white/10"
+                            placeholder="https://example.com"
+                        />
+                    </div>
                 </div>
 
                 {/* Industry */}
-                <div>
-                    <label htmlFor="industry" className="block text-sm font-medium text-gray-300 mb-2">
+                <div className="group">
+                    <label htmlFor="industry" className="block text-sm font-semibold text-gray-300 mb-2.5">
                         Industry *
                     </label>
-                    <select
-                        id="industry"
-                        name="industry"
-                        value={formData.industry}
-                        onChange={handleChange}
-                        className={clsx(
-                            'w-full px-4 py-3 bg-white/5 border rounded-lg text-white focus:outline-none focus:ring-2 transition-all',
-                            errors.industry ? 'border-red-500 focus:ring-red-500' : 'border-white/10 focus:ring-primary-500'
-                        )}
-                    >
-                        <option value="" className="bg-gray-900">Select an industry</option>
-                        {industries.map((industry) => (
-                            <option key={industry} value={industry} className="bg-gray-900">
-                                {industry}
-                            </option>
-                        ))}
-                    </select>
-                    {errors.industry && <p className="mt-1 text-sm text-red-500">{errors.industry}</p>}
+                    <div className="relative">
+                        <select
+                            id="industry"
+                            name="industry"
+                            required
+                            value={selectedIndustry}
+                            className="w-full px-4 py-3.5 bg-white/5 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-transparent focus:bg-white/10 transition-all duration-200 hover:bg-white/10 cursor-pointer appearance-none"
+                            onChange={(e) => {
+                                setSelectedIndustry(e.target.value);
+                                if (e.target.value !== 'Other') {
+                                    setCustomIndustry('');
+                                }
+                            }}
+                        >
+                            <option value="" className="bg-gray-900">Select an industry</option>
+                            {industries.map((industry) => (
+                                <option key={industry} value={industry} className="bg-gray-900">
+                                    {industry}
+                                </option>
+                            ))}
+                        </select>
+                        <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                            <svg className="w-5 h-5 text-gray-400" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+                                <path d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             {/* Custom Industry (shown when "Other" is selected) */}
-            {formData.industry === 'Other' && (
-                <div className="animate-slide-up">
-                    <label htmlFor="customIndustry" className="block text-sm font-medium text-gray-300 mb-2">
+            {selectedIndustry === 'Other' && (
+                <div className="animate-slide-up group">
+                    <label htmlFor="customIndustry" className="block text-sm font-semibold text-gray-300 mb-2.5">
                         Please specify your industry *
                     </label>
                     <input
                         type="text"
                         id="customIndustry"
-                        name="customIndustry"
-                        value={formData.customIndustry}
-                        onChange={handleChange}
-                        className={clsx(
-                            'w-full px-4 py-3 bg-white/5 border rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 transition-all',
-                            errors.customIndustry ? 'border-red-500 focus:ring-red-500' : 'border-white/10 focus:ring-primary-500'
-                        )}
+                        value={customIndustry}
+                        onChange={(e) => setCustomIndustry(e.target.value)}
+                        required
+                        className="w-full px-4 py-3.5 bg-white/5 border border-white/20 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-transparent focus:bg-white/10 transition-all duration-200 hover:bg-white/10"
                         placeholder="Enter your industry"
                     />
-                    {errors.customIndustry && <p className="mt-1 text-sm text-red-500">{errors.customIndustry}</p>}
                 </div>
             )}
 
             {/* User Type */}
-            <div>
-                <label className="block text-sm font-medium text-gray-300 mb-3">
+            <div className="pt-4">
+                <label className="block text-sm font-semibold text-gray-300 mb-4">
                     I am a *
                 </label>
-                <div className="flex gap-4">
-                    <label className="flex items-center space-x-3 cursor-pointer">
+                <div className="grid grid-cols-2 gap-4">
+                    <label className="relative flex items-center justify-center p-4 rounded-xl border-2 border-white/20 bg-white/5 hover:border-white/30 hover:bg-white/10 cursor-pointer transition-all duration-200 has-[:checked]:border-primary-500 has-[:checked]:bg-primary-500/10">
                         <input
                             type="radio"
                             name="userType"
-                            value="publisher"
-                            checked={formData.userType === 'publisher'}
-                            onChange={handleChange}
-                            className="w-4 h-4 text-primary-600 focus:ring-primary-500 focus:ring-2"
+                            value="Publisher"
+                            defaultChecked
+                            className="sr-only peer"
                         />
-                        <span className="text-white">Publisher</span>
+                        <div className="flex items-center gap-3">
+                            <div className="w-5 h-5 rounded-full border-2 border-gray-500 flex items-center justify-center transition-all peer-checked:border-primary-500 peer-checked:bg-primary-500">
+                                <div className="w-2 h-2 bg-white rounded-full opacity-0 peer-checked:opacity-100"></div>
+                            </div>
+                            <span className="text-white font-medium">Publisher</span>
+                        </div>
                     </label>
-                    <label className="flex items-center space-x-3 cursor-pointer">
+
+                    <label className="relative flex items-center justify-center p-4 rounded-xl border-2 border-white/20 bg-white/5 hover:border-white/30 hover:bg-white/10 cursor-pointer transition-all duration-200 has-[:checked]:border-accent-500 has-[:checked]:bg-accent-500/10">
                         <input
                             type="radio"
                             name="userType"
-                            value="advertiser"
-                            checked={formData.userType === 'advertiser'}
-                            onChange={handleChange}
-                            className="w-4 h-4 text-primary-600 focus:ring-primary-500 focus:ring-2"
+                            value="Advertiser"
+                            className="sr-only peer"
                         />
-                        <span className="text-white">Advertiser</span>
+                        <div className="flex items-center gap-3">
+                            <div className="w-5 h-5 rounded-full border-2 border-gray-500 flex items-center justify-center transition-all peer-checked:border-accent-500 peer-checked:bg-accent-500">
+                                <div className="w-2 h-2 bg-white rounded-full opacity-0 peer-checked:opacity-100"></div>
+                            </div>
+                            <span className="text-white font-medium">Advertiser</span>
+                        </div>
                     </label>
                 </div>
             </div>
@@ -245,10 +258,23 @@ export default function WaitlistForm() {
             {/* Submit Button */}
             <button
                 type="submit"
-                className="w-full btn-primary text-lg py-4"
+                disabled={isSubmitting}
+                className="w-full btn-primary text-lg py-4 font-semibold shadow-lg hover:shadow-primary-500/25 transform hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
             >
-                Join Waitlist
+                <span className="flex items-center justify-center gap-2">
+                    {isSubmitting ? 'Submitting...' : 'Join Waitlist'}
+                    {!isSubmitting && (
+                        <svg className="w-5 h-5" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+                            <path d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                        </svg>
+                    )}
+                </span>
             </button>
+
+            {/* Privacy Notice */}
+            <p className="text-xs text-gray-500 text-center pt-2">
+                By submitting this form, you agree to receive updates about AdInfra AI. We respect your privacy and will never share your information.
+            </p>
         </form>
     );
 }

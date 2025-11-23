@@ -31,9 +31,9 @@ export default function Footer() {
                                 </Link>
                             </li>
                             <li>
-                                <a href="#waitlist" className="text-gray-400 hover:text-white transition-colors">
+                                <Link href="/waitlist" className="text-gray-400 hover:text-white transition-colors">
                                     Join Waitlist
-                                </a>
+                                </Link>
                             </li>
                         </ul>
                     </div>

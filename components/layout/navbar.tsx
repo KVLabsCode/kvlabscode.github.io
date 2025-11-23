@@ -24,9 +24,9 @@ export default function Navbar() {
                         <Link href="/case-studies" className="text-gray-300 hover:text-white transition-colors">
                             Case Studies
                         </Link>
-                        <a href="#waitlist" className="btn-primary">
+                        <Link href="/waitlist" className="btn-primary">
                             Join Waitlist
-                        </a>
+                        </Link>
                     </div>
 
                     {/* Mobile menu button */}
@@ -70,13 +70,13 @@ export default function Navbar() {
                         >
                             Case Studies
                         </Link>
-                        <a
-                            href="#waitlist"
+                        <Link
+                            href="/waitlist"
                             className="block btn-primary text-center"
                             onClick={() => setIsMenuOpen(false)}
                         >
                             Join Waitlist
-                        </a>
+                        </Link>
                     </div>
                 )}
             </div>

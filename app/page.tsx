@@ -1,6 +1,5 @@
 import Navbar from '@/components/layout/navbar';
 import Footer from '@/components/layout/footer';
-import WaitlistForm from '@/components/forms/waitlist-form';
 import CaseStudyCard from '@/components/cards/case-study-card';
 import { caseStudies } from '@/lib/case-studies';
 import Link from 'next/link';
@@ -29,9 +28,9 @@ export default function Home() {
                 and advertisers to reach users in conversational interfaces.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up">
-                <a href="#waitlist" className="btn-primary text-lg px-8 py-4">
+                <Link href="/waitlist" className="btn-primary text-lg px-8 py-4">
                   Join Waitlist
-                </a>
+                </Link>
                 <Link href="/case-studies" className="btn-secondary text-lg px-8 py-4">
                   View Case Studies
                 </Link>
@@ -203,19 +202,19 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Waitlist CTA Section */}
-        <section id="waitlist" className="py-20 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
-                Join the Waitlist
-              </h2>
-              <p className="text-xl text-gray-400">
-                Be among the first to access the future of AI advertising
-              </p>
-            </div>
-
-            <WaitlistForm />
+        {/* Final CTA Section */}
+        <section className="py-20 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
+              Ready to Transform Your{' '}
+              <span className="gradient-text">AI Advertising?</span>
+            </h2>
+            <p className="text-xl text-gray-300 mb-8">
+              Join the waitlist today and be among the first to access our revolutionary platform
+            </p>
+            <Link href="/waitlist" className="btn-primary text-lg px-8 py-4 inline-block">
+              Join the Waitlist
+            </Link>
           </div>
         </section>
       </main>
