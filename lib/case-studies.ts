@@ -20,12 +20,12 @@ export const caseStudies: CaseStudy[] = [
         solution: 'Integrated AdInfra AI\'s contextual ad system, delivering relevant ads within natural conversation flow.',
         results: [
             {
-                metric: '600%',
+                metric: '40%',
                 value: 'Revenue Lift',
                 description: 'Per chat session compared to traditional banner ads',
             },
             {
-                metric: '1 Hour',
+                metric: '10 Minutes',
                 value: 'Integration Time',
                 description: 'From signup to first ad served',
             },

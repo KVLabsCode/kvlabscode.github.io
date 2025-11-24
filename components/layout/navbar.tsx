@@ -1,13 +1,30 @@
 'use client';
 
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 
 export default function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
+    const pathname = usePathname();
+    const isHomePage = pathname === '/';
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setIsScrolled(window.scrollY > 50);
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     return (
-        <nav className="fixed top-0 left-0 right-0 z-50 glass-effect border-b border-white/10">
+        <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+            isHomePage && !isScrolled
+                ? 'bg-transparent border-transparent'
+                : 'glass-effect border-b border-white/10'
+        }`}>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center h-16">
                     {/* Logo */}
@@ -19,10 +36,18 @@ export default function Navbar() {
                     {/* Desktop Navigation */}
                     <div className="hidden md:flex items-center">
                         <div className="flex items-center space-x-8">
-                            <Link href="/#features" className="text-gray-300 hover:text-white transition-colors">
+                            <Link href="/#features" className={`transition-colors ${
+                                isHomePage && !isScrolled
+                                    ? 'text-white/90 hover:text-white'
+                                    : 'text-gray-300 hover:text-white'
+                            }`}>
                                 Features
                             </Link>
-                            <Link href="/#proven-results" className="text-gray-300 hover:text-white transition-colors">
+                            <Link href="/#proven-results" className={`transition-colors ${
+                                isHomePage && !isScrolled
+                                    ? 'text-white/90 hover:text-white'
+                                    : 'text-gray-300 hover:text-white'
+                            }`}>
                                 Case Studies
                             </Link>
                         </div>
@@ -31,7 +56,11 @@ export default function Navbar() {
                                 href="https://chat-ad-network.vercel.app/" 
                                 target="_blank" 
                                 rel="noopener noreferrer"
-                                className="btn-secondary"
+                                className={`transition-all ${
+                                    isHomePage && !isScrolled
+                                        ? 'px-6 py-3 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-semibold rounded-lg'
+                                        : 'btn-secondary'
+                                }`}
                             >
                                 Dashboard
                             </a>
@@ -43,7 +72,11 @@ export default function Navbar() {
 
                     {/* Mobile menu button */}
                     <button
-                        className="md:hidden text-gray-300 hover:text-white"
+                        className={`md:hidden transition-colors ${
+                            isHomePage && !isScrolled
+                                ? 'text-white/90 hover:text-white'
+                                : 'text-gray-300 hover:text-white'
+                        }`}
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
                         aria-label="Toggle menu"
                     >
@@ -67,17 +100,29 @@ export default function Navbar() {
 
                 {/* Mobile menu */}
                 {isMenuOpen && (
-                    <div className="md:hidden py-4 space-y-4 animate-fade-in">
+                    <div className={`md:hidden py-4 space-y-4 animate-fade-in ${
+                        isHomePage && !isScrolled
+                            ? 'bg-black/40 backdrop-blur-md rounded-b-xl'
+                            : ''
+                    }`}>
                         <Link
                             href="/#features"
-                            className="block text-gray-300 hover:text-white transition-colors"
+                            className={`block transition-colors ${
+                                isHomePage && !isScrolled
+                                    ? 'text-white/90 hover:text-white'
+                                    : 'text-gray-300 hover:text-white'
+                            }`}
                             onClick={() => setIsMenuOpen(false)}
                         >
                             Features
                         </Link>
                         <Link
                             href="/#proven-results"
-                            className="block text-gray-300 hover:text-white transition-colors"
+                            className={`block transition-colors ${
+                                isHomePage && !isScrolled
+                                    ? 'text-white/90 hover:text-white'
+                                    : 'text-gray-300 hover:text-white'
+                            }`}
                             onClick={() => setIsMenuOpen(false)}
                         >
                             Case Studies

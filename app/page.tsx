@@ -21,6 +21,7 @@ export default function Home() {
             <div className="text-center max-w-4xl mx-auto">
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6 animate-fade-in">
                 The Future of{' '}
+                <br />
                 <span className="gradient-text">AI Advertising</span>
               </h1>
               <p className="text-xl sm:text-2xl text-gray-300 mb-8 animate-slide-up">
@@ -30,14 +31,11 @@ export default function Home() {
                 <Link href="/waitlist" className="btn-primary text-lg px-8 py-4">
                   Join Waitlist
                 </Link>
-                <Link href="/case-studies" className="btn-secondary text-lg px-8 py-4">
-                  View Case Studies
-                </Link>
               </div>
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-20 max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10 max-w-4xl mx-auto">
               <div className="text-center glass-effect rounded-xl p-6">
                 <div className="text-4xl font-bold gradient-text mb-2">120%</div>
                 <div className="text-gray-400">Average Revenue Increase</div>
@@ -204,6 +202,14 @@ export default function Home() {
                       <span className="text-green-400">"technology,ai"</span>
                       <span className="text-gray-500">  </span>
                       <span className="text-gray-500">// Pass contextual keyword</span>
+                    </span>
+                    <br />
+                    <span className="ml-4">
+                      <span className="text-purple-400">format</span>
+                      <span className="text-gray-500">=</span>
+                      <span className="text-green-400">"standard"</span>
+                      <span className="text-gray-500">        </span>
+                      <span className="text-gray-500">//'standard' or 'small'</span>
                     </span>
                     <br />
                     <span className="text-cyan-400">/&gt;</span>

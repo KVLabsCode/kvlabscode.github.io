@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import Script from 'next/script';
 import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -18,6 +19,11 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className} suppressHydrationWarning>
         {children}
+        <Script
+          src="https://cloud.umami.is/script.js"
+          data-website-id="0ae072c1-e117-4757-9f76-79ad6b16c86e"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
