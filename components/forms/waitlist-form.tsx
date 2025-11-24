@@ -59,6 +59,15 @@ export default function WaitlistForm() {
             // If we get here, assume success (no-cors doesn't return response)
             setIsSubmitted(true);
             setSelectedIndustry('');
+
+            // Track form submission with Umami
+            if (typeof window !== 'undefined' && (window as any).umami) {
+                (window as any).umami.track('form_submission', {
+                    form_type: 'waitlist',
+                    user_type: formData.get('userType') as string,
+                    industry: formData.get('industry') as string,
+                });
+            }
         } catch (error) {
             console.error('Form submission error:', error);
             setSubmitError('Failed to submit form. Please try again.');
