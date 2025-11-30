@@ -163,7 +163,7 @@ export default function CarouselDemo() {
             </div>
           )}
 
-          {/* Processing Indicator - For Generation, show AD instead */}
+          {/* Processing Indicator - For Generation, show BLURRED BACKGROUND with FOREGROUND AD */}
           {activeFormat !== 'generation' ? (
             <div
               className={`transition-all duration-500 flex items-center gap-3 ml-14 ${
@@ -178,67 +178,111 @@ export default function CarouselDemo() {
               <span className="text-sm text-gray-400">AI is thinking...</span>
             </div>
           ) : (
-            /* Valentine's Day Ad DURING Generation */
+            /* Full-screen Ad Overlay with Blurred Background */
             <div
               className={`transition-all duration-500 ${
                 step >= 1 && step < 2 ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
               }`}
             >
-              <div className="relative group">
-                <div className="absolute -inset-1 bg-gradient-to-r from-pink-500 via-red-500 to-pink-500 rounded-3xl opacity-75 group-hover:opacity-100 blur-xl transition duration-500 animate-gradient-x"></div>
-                
-                <div className="relative bg-gradient-to-br from-gray-900 to-black rounded-3xl overflow-hidden border border-pink-500/40 shadow-2xl">
-                  {/* Generating badge */}
-                  <div className="absolute top-4 right-4 px-3 py-1.5 bg-purple-500/20 backdrop-blur-sm border border-purple-400/30 rounded-full flex items-center gap-2">
-                    <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse"></div>
-                    <span className="text-xs font-semibold text-purple-300">Generating in background...</span>
-                  </div>
-
-                  <div className="p-8">
-                    <span className="px-3 py-1.5 bg-gradient-to-r from-pink-500/20 to-red-500/20 border border-pink-500/30 rounded-full text-xs font-bold text-pink-300 inline-block mb-4">
-                      SPONSORED
-                    </span>
-                    
-                    <div className="flex gap-6 mb-6">
-                      <div className="w-28 h-28 rounded-2xl bg-gradient-to-br from-pink-500 to-red-500 flex items-center justify-center flex-shrink-0 shadow-lg shadow-pink-500/50">
-                        <svg className="w-14 h-14 text-white" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+              <div className="relative min-h-[600px] flex items-center justify-center">
+                {/* Blurred Background - Generating State */}
+                <div className="absolute inset-0 blur-xl opacity-40 pointer-events-none">
+                  <div className="glass-effect rounded-2xl p-6">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="relative">
+                        <svg className="w-10 h-10 animate-spin text-purple-500" fill="none" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                         </svg>
                       </div>
-                      
                       <div className="flex-1">
-                        <h3 className="text-3xl font-bold text-white mb-3">
-                          Valentine's Day Sale
-                        </h3>
-                        <p className="text-xl text-pink-400 font-bold mb-3">
-                          40% Off All Gifts 💝
-                        </p>
-                        <p className="text-gray-300 leading-relaxed mb-4">
-                          Express your love with personalized jewelry, premium chocolates, fresh flowers & romantic experiences.
-                        </p>
-                        <div className="flex items-center gap-3 text-pink-400 font-semibold">
-                          <svg className="w-5 h-5 animate-pulse" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
-                            <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                          </svg>
-                          <span>Sale ends in 3 days - Shop now!</span>
+                        <p className="text-white font-semibold">Generating your song...</p>
+                        <div className="w-full bg-white/10 rounded-full h-2">
+                          <div className="bg-gradient-to-r from-purple-500 to-pink-500 h-full rounded-full" style={{ width: '60%' }}></div>
                         </div>
                       </div>
                     </div>
+                  </div>
+                </div>
+
+                {/* Foreground Video/Interstitial Ad */}
+                <div className="relative z-10 max-w-2xl w-full animate-fade-in">
+                  <div className="relative group">
+                    <div className="absolute -inset-1 bg-gradient-to-r from-pink-500 via-red-500 to-pink-500 rounded-3xl opacity-75 blur-2xl animate-gradient-x"></div>
                     
-                    <button className="w-full px-6 py-4 bg-gradient-to-r from-pink-600 to-red-600 hover:from-pink-500 hover:to-red-500 text-white text-lg font-bold rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-pink-500/50 flex items-center justify-center gap-3 group">
-                      <span>Shop Valentine's Collection</span>
-                      <svg className="w-6 h-6 group-hover:translate-x-1 transition-transform" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-                      </svg>
-                    </button>
-                    
-                    <p className="text-center text-xs text-gray-500 mt-3">
-                      Ad by LoveGifts.com
-                    </p>
+                    <div className="relative bg-gradient-to-br from-gray-900 to-black rounded-3xl overflow-hidden border-2 border-pink-500/50 shadow-2xl">
+                      {/* Video Ad Simulation */}
+                      <div className="relative aspect-video bg-gradient-to-br from-pink-600 via-red-600 to-pink-700 overflow-hidden">
+                        {/* Play Icon Overlay */}
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <div className="w-20 h-20 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center animate-pulse">
+                            <svg className="w-10 h-10 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M8 5v14l11-7z" />
+                            </svg>
+                          </div>
+                        </div>
+                        
+                        {/* Video Content Mockup */}
+                        <div className="absolute inset-0 flex items-center justify-center p-8">
+                          <div className="text-center">
+                            <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-white/30 backdrop-blur-sm flex items-center justify-center">
+                              <svg className="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                              </svg>
+                            </div>
+                            <h3 className="text-3xl font-bold text-white mb-2 drop-shadow-lg">
+                              Valentine's Day Sale
+                            </h3>
+                            <p className="text-xl text-white font-semibold drop-shadow-lg">
+                              40% Off All Gifts 💝
+                            </p>
+                          </div>
+                        </div>
+
+                        {/* Video Progress Bar */}
+                        <div className="absolute bottom-0 left-0 right-0 h-1 bg-white/20">
+                          <div className="h-full bg-white animate-pulse" style={{ width: '70%' }}></div>
+                        </div>
+
+                        {/* Sponsored Badge */}
+                        <div className="absolute top-3 left-3 px-3 py-1.5 bg-black/50 backdrop-blur-sm rounded-full">
+                          <span className="text-xs font-bold text-white">SPONSORED</span>
+                        </div>
+
+                        {/* Skip in X seconds */}
+                        <div className="absolute top-3 right-3 px-3 py-1.5 bg-black/50 backdrop-blur-sm rounded-full">
+                          <span className="text-xs font-semibold text-white">Ad • 5s</span>
+                        </div>
+
+                        {/* Generating indicator */}
+                        <div className="absolute bottom-3 left-3 px-3 py-1.5 bg-purple-500/80 backdrop-blur-sm rounded-full flex items-center gap-2">
+                          <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
+                          <span className="text-xs font-semibold text-white">Generating your song...</span>
+                        </div>
+                      </div>
+
+                      {/* Ad Details Below Video */}
+                      <div className="p-6 bg-gradient-to-br from-gray-900 to-black">
+                        <p className="text-gray-300 leading-relaxed mb-4">
+                          Express your love with personalized jewelry, premium chocolates, fresh flowers & romantic experiences. Limited time offer!
+                        </p>
+                        
+                        <button className="w-full px-6 py-4 bg-gradient-to-r from-pink-600 to-red-600 hover:from-pink-500 hover:to-red-500 text-white text-lg font-bold rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-pink-500/50 flex items-center justify-center gap-3 group">
+                          <span>Shop Now</span>
+                          <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+                            <path d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                          </svg>
+                        </button>
+                        
+                        <p className="text-center text-xs text-gray-500 mt-3">
+                          LoveGifts.com • Your content will appear after this ad
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-              <p className="text-xs text-gray-500 mt-3 text-center">Ad displays while AI generates your song</p>
+              <p className="text-xs text-gray-500 mt-4 text-center">Video ad displays while song generates in blurred background</p>
             </div>
           )}
 
