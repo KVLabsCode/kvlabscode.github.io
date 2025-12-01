@@ -100,7 +100,97 @@ export default function CarouselDemo() {
   };
 
   return (
-    <div className="relative max-w-full sm:max-w-3xl lg:max-w-6xl mx-auto px-2 sm:px-0">
+    <div className="max-w-full sm:max-w-3xl lg:max-w-6xl mx-auto px-2 sm:px-0">
+      {/* Mobile: scrollable inline chat demo (simplified) */}
+      <div className="md:hidden mb-8">
+        <div className="glass-effect rounded-2xl p-4 space-y-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-gray-200">
+            <span className="w-1.5 h-1.5 rounded-full bg-primary-500 animate-pulse" />
+            <span>Inline Ads · Mobile preview</span>
+          </div>
+
+          {/* User message */}
+          <div className="flex items-start gap-3">
+            <div className="flex-shrink-0 w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center text-white text-sm font-semibold">
+              U
+            </div>
+            <div className="flex-1">
+              <div className="bg-white/5 border border-white/10 rounded-2xl rounded-tl-none p-3 backdrop-blur-sm">
+                <p className="text-sm text-gray-200">
+                  What are the best running shoes for marathon training?
+                </p>
+              </div>
+              <p className="text-xs text-gray-500 mt-1 ml-2">User Query</p>
+            </div>
+          </div>
+
+          {/* AI response */}
+          <div className="flex items-start gap-3">
+            <div className="flex-shrink-0 w-8 h-8 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white text-xs font-semibold shadow-lg shadow-purple-500/30">
+              AI
+            </div>
+            <div className="flex-1">
+              <div className="bg-gradient-to-br from-white/10 to-white/5 border border-white/10 rounded-2xl rounded-tl-none p-3 backdrop-blur-sm">
+                <p className="text-sm text-gray-200 mb-2">
+                  For marathon training, you'll want shoes with excellent cushioning and support. 
+                  Here are the top recommendations:
+                </p>
+                <ul className="space-y-1 text-xs text-gray-300">
+                  <li className="flex items-start gap-1.5">
+                    <span className="text-primary-400 mt-0.5">•</span>
+                    <span><strong className="text-white">Nike ZoomX Vaporfly</strong> – Elite racing shoe with carbon plate</span>
+                  </li>
+                  <li className="flex items-start gap-1.5">
+                    <span className="text-primary-400 mt-0.5">•</span>
+                    <span><strong className="text-white">ASICS Gel-Nimbus 25</strong> – Maximum cushioning</span>
+                  </li>
+                </ul>
+              </div>
+              <p className="text-xs text-gray-500 mt-1 ml-2">AI Response</p>
+            </div>
+          </div>
+
+          {/* Inline sponsored ad */}
+          <div className="mt-2">
+            <div className="relative group">
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-primary-500 via-accent-500 to-primary-500 rounded-2xl opacity-60 group-hover:opacity-100 blur transition duration-500 animate-gradient-x"></div>
+              <div className="relative bg-gradient-to-br from-gray-900 to-black rounded-2xl p-4 border border-primary-500/30 hover:border-primary-500/50 transition-all duration-300">
+                <div className="flex items-start justify-between mb-2">
+                  <span className="px-2 py-0.5 bg-gradient-to-r from-primary-500/20 to-accent-500/20 border border-primary-500/30 rounded-full text-[10px] font-semibold text-primary-300">
+                    SPONSORED
+                  </span>
+                </div>
+                <h3 className="text-sm font-semibold text-white mb-1">
+                  Get 20% Off Running Shoes at FleetFeet
+                </h3>
+                <p className="text-xs text-gray-400 mb-3 leading-relaxed">
+                  Expert fitting, premium brands, and personalized gait analysis. Find your perfect marathon training shoe today.
+                </p>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center">
+                      <svg className="w-4 h-4 text-white" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+                        <path d="M13 10V3L4 14h7v7l9-11h-7z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <div className="text-xs font-semibold text-white">FleetFeet</div>
+                      <div className="text-[10px] text-gray-500">fleetfeet.com</div>
+                    </div>
+                  </div>
+                  <button className="px-3 py-1.5 bg-gradient-to-r from-primary-600 to-accent-600 text-[11px] font-semibold rounded-lg">
+                    Shop Now
+                  </button>
+                </div>
+              </div>
+            </div>
+            <p className="text-[10px] text-gray-500 mt-1 ml-1">Inline Sponsored Ad</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Desktop / tablet: full animated carousel */}
+      <div className="relative hidden md:block">
       {/* Format Indicator */}
       <div className="text-center mb-6 sm:mb-8">
         <div className="inline-flex items-center gap-2 sm:gap-3 glass-effect rounded-full px-4 sm:px-6 py-2 sm:py-3 max-w-full">
@@ -743,6 +833,7 @@ export default function CarouselDemo() {
 
       {/* Flow Arrow */}
       <div className="absolute left-6 top-32 bottom-32 w-0.5 bg-gradient-to-b from-primary-500/50 via-accent-500/50 to-primary-500/50 hidden md:block"></div>
+      </div>
     </div>
   );
 }
