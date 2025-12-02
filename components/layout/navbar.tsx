@@ -14,6 +14,7 @@ export default function Navbar() {
     const isCaseStudiesPage = pathname === '/case-studies';
     const isDocsPage = pathname === '/docs';
     const shouldBeTransparent = (isHomePage || isWaitlistPage || isCaseStudiesPage || isDocsPage) && !isScrolled;
+    const showNewsBanner = !isDocsPage; // Hide news banner on docs page
 
     useEffect(() => {
         const handleScroll = () => {
@@ -31,11 +32,12 @@ export default function Navbar() {
                 : 'glass-effect border-b border-white/10'
         }`}>
             {/* Top announcement / news bar - above navbar */}
-            <div
-                className={`hidden sm:flex items-center justify-center py-2 text-xs sm:text-sm border-b border-white/10 ${
-                    shouldBeTransparent ? 'bg-black/60 backdrop-blur-md' : 'bg-slate-900/80 backdrop-blur-md'
-                }`}
-            >
+            {showNewsBanner && (
+              <div
+                  className={`hidden sm:flex items-center justify-center py-2 text-xs sm:text-sm border-b border-white/10 ${
+                      shouldBeTransparent ? 'bg-black/60 backdrop-blur-md' : 'bg-slate-900/80 backdrop-blur-md'
+                  }`}
+              >
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex items-center justify-center">
                     <div className="flex items-center gap-3 text-center">
                         <span className="px-2.5 py-1 rounded-full bg-primary-500/10 text-primary-300 text-[11px] font-semibold uppercase tracking-wide">
@@ -63,7 +65,8 @@ export default function Navbar() {
                         </Link>
                     </div>
                 </div>
-            </div>
+              </div>
+            )}
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center h-16">
