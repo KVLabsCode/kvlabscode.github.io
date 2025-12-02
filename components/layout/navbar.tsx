@@ -30,6 +30,41 @@ export default function Navbar() {
                 ? 'bg-transparent border-transparent'
                 : 'glass-effect border-b border-white/10'
         }`}>
+            {/* Top announcement / news bar - above navbar */}
+            <div
+                className={`hidden sm:flex items-center justify-center py-2 text-xs sm:text-sm border-b border-white/10 ${
+                    shouldBeTransparent ? 'bg-black/60 backdrop-blur-md' : 'bg-slate-900/80 backdrop-blur-md'
+                }`}
+            >
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex items-center justify-center">
+                    <div className="flex items-center gap-3 text-center">
+                        <span className="px-2.5 py-1 rounded-full bg-primary-500/10 text-primary-300 text-[11px] font-semibold uppercase tracking-wide">
+                            News
+                        </span>
+                        <span className={shouldBeTransparent ? 'text-white/80' : 'text-gray-200'}>
+                            We are raising our seed round.
+                        </span>
+                        <Link
+                            href="/waitlist"
+                            className="inline-flex items-center gap-1 text-primary-300 hover:text-primary-200 font-medium"
+                        >
+                            <span>Read more</span>
+                            <svg
+                                className="w-4 h-4"
+                                fill="none"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path d="M9 5l7 7-7 7" />
+                            </svg>
+                        </Link>
+                    </div>
+                </div>
+            </div>
+
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center h-16">
                     {/* Logo */}
@@ -45,7 +80,14 @@ export default function Navbar() {
                                     ? 'text-white/90 hover:text-white'
                                     : 'text-gray-300 hover:text-white'
                             }`}>
-                                Features
+                                Publishers
+                            </Link>
+                            <Link href="/advertisers" className={`transition-colors ${
+                                shouldBeTransparent
+                                    ? 'text-white/90 hover:text-white'
+                                    : 'text-gray-300 hover:text-white'
+                            }`}>
+                                Advertisers
                             </Link>
                             <Link href="/docs" className={`transition-colors ${
                                 shouldBeTransparent
@@ -69,7 +111,7 @@ export default function Navbar() {
                                 Dashboard
                             </a>
                             <Link href="/waitlist" className="btn-primary">
-                                Join Waitlist
+                                Request Access
                             </Link>
                         </div>
                     </div>
@@ -118,7 +160,18 @@ export default function Navbar() {
                             }`}
                             onClick={() => setIsMenuOpen(false)}
                         >
-                            Features
+                            Publishers
+                        </Link>
+                        <Link
+                            href="/advertisers"
+                            className={`block px-4 py-3 mx-2 rounded-lg transition-all ${
+                                shouldBeTransparent
+                                    ? 'text-white/90 hover:text-white hover:bg-white/10'
+                                    : 'text-gray-300 hover:text-white hover:bg-white/10'
+                            }`}
+                            onClick={() => setIsMenuOpen(false)}
+                        >
+                            Advertisers
                         </Link>
                         <Link
                             href="/docs"
@@ -146,7 +199,7 @@ export default function Navbar() {
                                 className="block w-full btn-primary text-center py-3.5 text-base"
                                 onClick={() => setIsMenuOpen(false)}
                             >
-                                Join Waitlist
+                                Request Access
                             </Link>
                         </div>
                     </div>

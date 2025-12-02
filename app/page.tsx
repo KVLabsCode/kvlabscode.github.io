@@ -131,22 +131,22 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Animated Demo Section */}
-        <section className="py-24 px-4 sm:px-6 lg:px-8 bg-black/40 backdrop-blur-sm relative overflow-hidden">
+        {/* How It Works Section (Publishers - Ad Formats) */}
+        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-black/40 backdrop-blur-sm relative overflow-hidden">
           {/* Decorative elements */}
           <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-transparent via-primary-500/20 to-transparent"></div>
           <div className="absolute top-0 right-1/4 w-px h-full bg-gradient-to-b from-transparent via-accent-500/20 to-transparent"></div>
           
           <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-20">
-              <div className="inline-block px-4 py-2 glass-effect rounded-full mb-6">
-                <span className="text-sm text-primary-400 font-semibold">FLEXIBLE AD FORMATS</span>
+            <div className="text-center mb-12 md:mb-16">
+              <div className="inline-block px-4 py-2 glass-effect rounded-full mb-4">
+                <span className="text-sm text-primary-400 font-semibold">FOR PUBLISHERS</span>
               </div>
-              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight">
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4 tracking-tight">
                 How It Works
               </h2>
               <p className="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
-                Multiple ad formats that seamlessly integrate into AI conversations
+                Multiple ad formats that seamlessly integrate into your AI assistant or chatbot experience.
               </p>
             </div>
 
@@ -197,16 +197,16 @@ export default function Home() {
         )}
 
         {/* Benefits Section */}
-        <section id="features" className="py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        <section id="features" className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
           {/* Background gradient */}
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary-900/5 to-transparent pointer-events-none"></div>
           
           <div className="max-w-7xl mx-auto relative z-10">
-            <div className="text-center mb-20">
-              <div className="inline-block px-4 py-2 glass-effect rounded-full mb-6">
+            <div className="text-center mb-14">
+              <div className="inline-block px-4 py-2 glass-effect rounded-full mb-4">
                 <span className="text-sm text-accent-400 font-semibold">WHY KOVIO</span>
               </div>
-              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight">
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4 tracking-tight">
                 Maximize Your AI App's Revenue
               </h2>
               <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
@@ -315,10 +315,12 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Advertiser Value Proposition Section */}
+
         {/* Integration Section */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8">
+        <section className="py-16 px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-16">
+            <div className="text-center mb-12">
               <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
                 Integrate in Minutes
               </h2>

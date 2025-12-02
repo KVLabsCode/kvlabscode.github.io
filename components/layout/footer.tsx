@@ -64,7 +64,7 @@ export default function Footer() {
                         <ul className="space-y-3">
                             <li>
                                 <Link href="/waitlist" className="text-gray-400 hover:text-white transition-colors text-sm">
-                                    Join Waitlist
+                                    Request Access
                                 </Link>
                             </li>
                             <li>

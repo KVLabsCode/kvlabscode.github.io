@@ -1,26 +1,61 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 export default function AnimatedDemo() {
   const [step, setStep] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(true);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [hasStarted, setHasStarted] = useState(false);
+  const containerRef = useRef<HTMLDivElement | null>(null);
 
+  // Scroll-triggered start
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el || hasStarted) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !hasStarted) {
+            setHasStarted(true);
+            setStep(0);
+            setIsAnimating(true);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    observer.observe(el);
+
+    return () => observer.disconnect();
+  }, [hasStarted]);
+
+  // Timed progression through steps (no looping)
   useEffect(() => {
     if (!isAnimating) return;
 
-    const timings = [1200, 1500, 1200, 2000]; // Faster timing for each step
+    const timings = [1200, 1500, 1200, 2000]; // Timing for each step
+    const clampedStep = Math.min(step, timings.length - 1);
+
     const timer = setTimeout(() => {
-      setStep((prev) => (prev + 1) % 4);
-    }, timings[step]);
+      setStep((prev) => {
+        if (prev >= timings.length - 1) {
+          // Stop at final step
+          setIsAnimating(false);
+          return timings.length - 1;
+        }
+        return prev + 1;
+      });
+    }, timings[clampedStep]);
 
     return () => clearTimeout(timer);
   }, [step, isAnimating]);
 
   return (
-    <div className="relative max-w-5xl mx-auto">
+    <div ref={containerRef} className="relative max-w-5xl mx-auto">
       {/* Demo Container */}
-      <div className="glass-effect rounded-3xl p-8 md:p-12 relative overflow-hidden">
+      <div className="glass-effect rounded-3xl p-8 md:p-12 relative overflow-hidden min-h-[380px] md:min-h-[460px]">
         {/* Background glow effects */}
         <div className="absolute -top-20 -right-20 w-64 h-64 bg-primary-500/20 rounded-full blur-3xl"></div>
         <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-accent-500/20 rounded-full blur-3xl"></div>
