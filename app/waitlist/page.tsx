@@ -32,8 +32,7 @@ export default function WaitlistPage() {
                             </div>
 
                             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-8 tracking-tight">
-                                Join the{' '}
-                                <span className="gradient-text drop-shadow-2xl">Waitlist</span>
+                                <span className="gradient-text drop-shadow-2xl">Join Kovio Today</span>
                             </h1>
 
                             <p className="text-xl sm:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">

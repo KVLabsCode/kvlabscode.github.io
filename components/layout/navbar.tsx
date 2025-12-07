@@ -44,7 +44,7 @@ export default function Navbar() {
                             News
                         </span>
                         <span className={shouldBeTransparent ? 'text-white/80' : 'text-gray-200'}>
-                            We are raising our seed round.
+                            Starting the seed round raise for Kovio!
                         </span>
                         <Link
                             href="/waitlist"
@@ -84,13 +84,6 @@ export default function Navbar() {
                                     : 'text-gray-300 hover:text-white'
                             }`}>
                                 Publishers
-                            </Link>
-                            <Link href="/advertisers" className={`transition-colors ${
-                                shouldBeTransparent
-                                    ? 'text-white/90 hover:text-white'
-                                    : 'text-gray-300 hover:text-white'
-                            }`}>
-                                Advertisers
                             </Link>
                             <Link href="/docs" className={`transition-colors ${
                                 shouldBeTransparent
@@ -164,17 +157,6 @@ export default function Navbar() {
                             onClick={() => setIsMenuOpen(false)}
                         >
                             Publishers
-                        </Link>
-                        <Link
-                            href="/advertisers"
-                            className={`block px-4 py-3 mx-2 rounded-lg transition-all ${
-                                shouldBeTransparent
-                                    ? 'text-white/90 hover:text-white hover:bg-white/10'
-                                    : 'text-gray-300 hover:text-white hover:bg-white/10'
-                            }`}
-                            onClick={() => setIsMenuOpen(false)}
-                        >
-                            Advertisers
                         </Link>
                         <Link
                             href="/docs"

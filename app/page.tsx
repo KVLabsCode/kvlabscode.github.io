@@ -2,7 +2,6 @@ import Navbar from '@/components/layout/navbar';
 import Footer from '@/components/layout/footer';
 import CaseStudyCard from '@/components/cards/case-study-card';
 import CarouselDemo from '@/components/demo/carousel-demo';
-import FAQ from '@/components/sections/faq';
 import { caseStudies } from '@/lib/case-studies';
 import Link from 'next/link';
 
@@ -37,24 +36,24 @@ export default function Home() {
                   </span>
                   <span className="text-sm text-gray-300 font-medium">Now in Early Access</span>
                 </div>
-                <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6 animate-fade-in leading-tight tracking-tight">
+                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 animate-fade-in leading-tight tracking-tight">
                   Monetize Your
                   <br />
                   <span className="gradient-text drop-shadow-lg">AI Solutions</span>
                 </h1>
-                <p className="text-xl sm:text-2xl text-gray-300 mb-10 animate-slide-up max-w-xl leading-relaxed">
+                <p className="text-lg sm:text-xl md:text-2xl text-gray-300 mb-10 animate-slide-up max-w-xl leading-relaxed">
                   Seamless, contextual ads that turn AI conversations into revenue without breaking the user experience.
                 </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-slide-up">
-                  <Link href="/waitlist" className="group btn-primary text-lg px-10 py-5 shadow-xl hover:shadow-primary-500/50 transition-all duration-300 transform hover:scale-105">
-                    <span className="flex items-center gap-2">
+                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start animate-slide-up">
+                  <Link href="/waitlist" className="group btn-primary text-base sm:text-lg px-8 sm:px-10 py-4 sm:py-5 shadow-xl hover:shadow-primary-500/50 transition-all duration-300 transform hover:scale-105">
+                    <span className="flex items-center justify-center gap-2">
                       Get Started
                       <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
                         <path d="M13 7l5 5m0 0l-5 5m5-5H6" />
                       </svg>
                     </span>
                   </Link>
-                  <Link href="/docs" className="btn-secondary text-lg px-10 py-5 hover:bg-white/15 transition-all duration-300">
+                  <Link href="/docs" className="btn-secondary text-base sm:text-lg px-8 sm:px-10 py-4 sm:py-5 hover:bg-white/15 transition-all duration-300">
                     View Docs
                   </Link>
                 </div>
@@ -142,10 +141,10 @@ export default function Home() {
               <div className="inline-block px-4 py-2 glass-effect rounded-full mb-4">
                 <span className="text-sm text-primary-400 font-semibold">FOR PUBLISHERS</span>
               </div>
-              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4 tracking-tight">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 tracking-tight">
                 How It Works
               </h2>
-              <p className="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
+              <p className="text-base sm:text-lg md:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
                 Multiple ad formats that seamlessly integrate into your AI assistant or chatbot experience.
               </p>
             </div>
@@ -206,107 +205,107 @@ export default function Home() {
               <div className="inline-block px-4 py-2 glass-effect rounded-full mb-4">
                 <span className="text-sm text-accent-400 font-semibold">WHY KOVIO</span>
               </div>
-              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4 tracking-tight">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 tracking-tight">
                 Maximize Your AI App's Revenue
               </h2>
-              <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-base sm:text-lg md:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
                 The only scalable monetization solution built for AI-first applications
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
               {/* Scale Up Revenue */}
-              <div className="glass-effect-premium rounded-2xl p-8 hover:bg-white/10 transition-all duration-300 group relative overflow-hidden">
+              <div className="glass-effect-premium rounded-2xl p-6 sm:p-8 hover:bg-white/10 transition-all duration-300 group relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-primary-500/10 rounded-full blur-3xl group-hover:bg-primary-500/20 transition-all duration-500"></div>
                 <div className="relative z-10">
-                  <div className="w-14 h-14 bg-gradient-to-br from-primary-500 to-primary-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg shadow-primary-500/30">
-                    <svg className="w-7 h-7 text-white" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-primary-500 to-primary-600 rounded-xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg shadow-primary-500/30">
+                    <svg className="w-6 h-6 sm:w-7 sm:h-7 text-white" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
                       <path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                   </div>
-                  <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-primary-300 transition-colors">Scale Up Revenue</h3>
-                  <p className="text-gray-300 leading-relaxed">
+                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 group-hover:text-primary-300 transition-colors">Scale Up Revenue</h3>
+                  <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
                     Earn for every click while maintaining full control over your user experience. Go live in just 10 minutes.
                   </p>
                 </div>
               </div>
 
               {/* Max LLM Performance */}
-              <div className="glass-effect-premium rounded-2xl p-8 hover:bg-white/10 transition-all duration-300 group relative overflow-hidden">
+              <div className="glass-effect-premium rounded-2xl p-6 sm:p-8 hover:bg-white/10 transition-all duration-300 group relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-accent-500/10 rounded-full blur-3xl group-hover:bg-accent-500/20 transition-all duration-500"></div>
                 <div className="relative z-10">
-                  <div className="w-14 h-14 bg-gradient-to-br from-accent-500 to-accent-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg shadow-accent-500/30">
-                    <svg className="w-7 h-7 text-white" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-accent-500 to-accent-600 rounded-xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg shadow-accent-500/30">
+                    <svg className="w-6 h-6 sm:w-7 sm:h-7 text-white" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
                       <path d="M13 10V3L4 14h7v7l9-11h-7z" />
                     </svg>
                   </div>
-                  <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-accent-300 transition-colors">Max LLM Performance</h3>
-                  <p className="text-gray-300 leading-relaxed">
+                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 group-hover:text-accent-300 transition-colors">Max LLM Performance</h3>
+                  <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
                     Ads served in milliseconds with zero latency impact. Your app stays lightning fast and responsive.
                   </p>
                 </div>
               </div>
 
               {/* Seamless UX */}
-              <div className="glass-effect-premium rounded-2xl p-8 hover:bg-white/10 transition-all duration-300 group relative overflow-hidden">
+              <div className="glass-effect-premium rounded-2xl p-6 sm:p-8 hover:bg-white/10 transition-all duration-300 group relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/10 rounded-full blur-3xl group-hover:bg-purple-500/20 transition-all duration-500"></div>
                 <div className="relative z-10">
-                  <div className="w-14 h-14 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg shadow-purple-500/30">
-                    <svg className="w-7 h-7 text-white" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg shadow-purple-500/30">
+                    <svg className="w-6 h-6 sm:w-7 sm:h-7 text-white" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
                       <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                     </svg>
                   </div>
-                  <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-purple-300 transition-colors">Seamless UX</h3>
-                  <p className="text-gray-300 leading-relaxed">
+                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 group-hover:text-purple-300 transition-colors">Seamless UX</h3>
+                  <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
                     Contextual ads that feel native to your app. Users get helpful information, not interruptions.
                   </p>
                 </div>
               </div>
 
               {/* Instant SDK Integration */}
-              <div className="glass-effect-premium rounded-2xl p-8 hover:bg-white/10 transition-all duration-300 group relative overflow-hidden">
+              <div className="glass-effect-premium rounded-2xl p-6 sm:p-8 hover:bg-white/10 transition-all duration-300 group relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-500/10 rounded-full blur-3xl group-hover:bg-cyan-500/20 transition-all duration-500"></div>
                 <div className="relative z-10">
-                  <div className="w-14 h-14 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg shadow-cyan-500/30">
-                    <svg className="w-7 h-7 text-white" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg shadow-cyan-500/30">
+                    <svg className="w-6 h-6 sm:w-7 sm:h-7 text-white" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
                       <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                     </svg>
                   </div>
-                  <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-cyan-300 transition-colors">Instant Integration</h3>
-                  <p className="text-gray-300 leading-relaxed">
+                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 group-hover:text-cyan-300 transition-colors">Instant Integration</h3>
+                  <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
                     Simple SDK setup with just a few lines of code. Available on all major platforms and frameworks.
                   </p>
                 </div>
               </div>
 
               {/* Contextual & Native */}
-              <div className="glass-effect-premium rounded-2xl p-8 hover:bg-white/10 transition-all duration-300 group relative overflow-hidden">
+              <div className="glass-effect-premium rounded-2xl p-6 sm:p-8 hover:bg-white/10 transition-all duration-300 group relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-full blur-3xl group-hover:bg-emerald-500/20 transition-all duration-500"></div>
                 <div className="relative z-10">
-                  <div className="w-14 h-14 bg-gradient-to-br from-green-500 to-emerald-500 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg shadow-emerald-500/30">
-                    <svg className="w-7 h-7 text-white" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-green-500 to-emerald-500 rounded-xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg shadow-emerald-500/30">
+                    <svg className="w-6 h-6 sm:w-7 sm:h-7 text-white" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
                       <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                   </div>
-                  <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-emerald-300 transition-colors">Contextual & Native</h3>
-                  <p className="text-gray-300 leading-relaxed">
+                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 group-hover:text-emerald-300 transition-colors">Contextual & Native</h3>
+                  <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
                     AI-powered matching ensures ads are always relevant to the conversation and user intent.
                   </p>
                 </div>
               </div>
 
-              {/* Premium Advertisers */}
-              <div className="glass-effect-premium rounded-2xl p-8 hover:bg-white/10 transition-all duration-300 group relative overflow-hidden">
+              {/* Premium Network */}
+              <div className="glass-effect-premium rounded-2xl p-6 sm:p-8 hover:bg-white/10 transition-all duration-300 group relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-orange-500/10 rounded-full blur-3xl group-hover:bg-orange-500/20 transition-all duration-500"></div>
                 <div className="relative z-10">
-                  <div className="w-14 h-14 bg-gradient-to-br from-orange-500 to-red-500 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg shadow-orange-500/30">
-                    <svg className="w-7 h-7 text-white" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-orange-500 to-red-500 rounded-xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg shadow-orange-500/30">
+                    <svg className="w-6 h-6 sm:w-7 sm:h-7 text-white" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
                       <path d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z" />
                       <path d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z" />
                     </svg>
                   </div>
-                  <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-orange-300 transition-colors">Premium Network</h3>
-                  <p className="text-gray-300 leading-relaxed">
+                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 group-hover:text-orange-300 transition-colors">Premium Network</h3>
+                  <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
                     Access to top-tier brands and advertisers. 100% premium ads with higher payouts.
                   </p>
                 </div>
@@ -315,37 +314,35 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Advertiser Value Proposition Section */}
-
         {/* Integration Section */}
         <section className="py-16 px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
                 Integrate in Minutes
               </h2>
-              <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+              <p className="text-base sm:text-lg md:text-xl text-gray-400 max-w-2xl mx-auto">
                 Start generating revenue with our intuitive SDK
               </p>
             </div>
 
             <div className="max-w-4xl mx-auto">
-              <div className="glass-effect rounded-2xl p-8 md:p-12 overflow-hidden relative">
+              <div className="glass-effect rounded-2xl p-6 sm:p-8 md:p-12 overflow-hidden relative">
                 {/* Glow effect */}
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-32 bg-primary-500/20 blur-3xl"></div>
                 
                 <div className="relative">
-                  <div className="flex items-center gap-2 mb-6">
+                  <div className="flex items-center gap-2 mb-4 sm:mb-6">
                     <div className="flex gap-2">
                       <div className="w-3 h-3 rounded-full bg-red-500"></div>
                       <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
                       <div className="w-3 h-3 rounded-full bg-green-500"></div>
                     </div>
-                    <span className="text-gray-400 text-sm ml-4">Install SDK</span>
+                    <span className="text-gray-400 text-xs sm:text-sm ml-2 sm:ml-4">Install SDK</span>
                   </div>
 
-                  <div className="bg-black/50 rounded-xl p-6 border border-white/10 mb-6">
-                    <pre className="text-sm font-mono leading-relaxed overflow-x-auto">
+                  <div className="bg-black/50 rounded-xl p-4 sm:p-6 border border-white/10 mb-4 sm:mb-6">
+                    <pre className="text-xs sm:text-sm font-mono leading-relaxed overflow-x-auto">
                       <code className="block">
                         <span className="text-pink-400">npm install</span>
                         <span className="text-gray-300"> @adinfra/sdk</span>
@@ -353,17 +350,17 @@ export default function Home() {
                     </pre>
                   </div>
 
-                  <div className="flex items-center gap-2 mb-6">
+                  <div className="flex items-center gap-2 mb-4 sm:mb-6">
                     <div className="flex gap-2">
                       <div className="w-3 h-3 rounded-full bg-red-500"></div>
                       <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
                       <div className="w-3 h-3 rounded-full bg-green-500"></div>
                     </div>
-                    <span className="text-gray-400 text-sm ml-4">Add to your app</span>
+                    <span className="text-gray-400 text-xs sm:text-sm ml-2 sm:ml-4">Add to your app</span>
                   </div>
 
-                  <div className="bg-black/50 rounded-xl p-6 border border-white/10">
-                    <pre className="text-sm font-mono leading-relaxed overflow-x-auto">
+                  <div className="bg-black/50 rounded-xl p-4 sm:p-6 border border-white/10">
+                    <pre className="text-xs sm:text-sm font-mono leading-relaxed overflow-x-auto">
                       <code className="block">
                         <span className="text-purple-400">import</span>
                         <span className="text-gray-300"> {'{ Kovio }'} </span>
@@ -407,14 +404,6 @@ export default function Home() {
                     </pre>
                   </div>
 
-                  <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-                    <Link href="/docs" className="btn-primary text-center">
-                      View Full Documentation
-                    </Link>
-                    <Link href="/waitlist" className="btn-secondary text-center">
-                      Get API Key
-                    </Link>
-                  </div>
                 </div>
               </div>
             </div>
@@ -526,54 +515,22 @@ export default function Home() {
           </section>
         )}
 
-        {/* FAQ Section */}
-        <FAQ />
-
-        {/* Final CTA Section */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
-            <div className="glass-effect rounded-3xl p-12 md:p-16 text-center relative overflow-hidden">
-              {/* Background effects */}
-              <div className="absolute top-0 left-1/4 w-64 h-64 bg-primary-500/30 rounded-full blur-3xl"></div>
-              <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-accent-500/30 rounded-full blur-3xl"></div>
-              
-              <div className="relative z-10">
-                <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
-                  Start Earning Now
-                </h2>
-                <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-                  Join leading AI apps monetizing conversations. Request access to start serving ads and go live in a day.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Link href="/waitlist" className="btn-primary text-lg px-8 py-4 inline-block">
-                    Request Access
-                  </Link>
-                  <Link href="/docs" className="btn-secondary text-lg px-8 py-4 inline-block">
-                    Read Documentation
-                  </Link>
-                </div>
-                
-                <div className="mt-12 flex flex-wrap items-center justify-center gap-8 text-sm text-gray-400">
-                  <div className="flex items-center gap-2">
-                    <svg className="w-5 h-5 text-primary-400" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
-                      <path d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span>No credit card required</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <svg className="w-5 h-5 text-primary-400" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
-                      <path d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span>10-minute setup</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <svg className="w-5 h-5 text-primary-400" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
-                      <path d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span>Free to start</span>
-                  </div>
-                </div>
-              </div>
+        {/* Simple CTA Section */}
+        <section className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mx-auto text-center">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+              <Link href="/waitlist" className="w-full sm:w-auto btn-primary text-base sm:text-lg px-8 sm:px-10 py-3.5 sm:py-4 inline-flex items-center justify-center gap-2">
+                Get Started
+                <svg className="w-5 h-5" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+                  <path d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </Link>
+              <Link href="/docs" className="w-full sm:w-auto btn-secondary text-base sm:text-lg px-8 sm:px-10 py-3.5 sm:py-4 inline-flex items-center justify-center gap-2">
+                View Docs
+                <svg className="w-5 h-5" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+                  <path d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                </svg>
+              </Link>
             </div>
           </div>
         </section>

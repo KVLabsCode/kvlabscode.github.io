@@ -19,7 +19,7 @@ export default function CarouselDemo() {
   const [isAutoPlay, setIsAutoPlay] = useState(true);
   const [isGenerating, setIsGenerating] = useState(false);
 
-  // Animation steps within each format
+  // Animation steps within each format - plays once then stops
   useEffect(() => {
     if (!isAnimating) return;
 
@@ -37,7 +37,10 @@ export default function CarouselDemo() {
       const delay = genTimings[step] ?? 0;
 
       // Once we reach step 2 (songs visible), stop auto-advancing
-      if (step >= 2 || delay === 0) return;
+      if (step >= 2 || delay === 0) {
+        setIsAnimating(false);
+        return;
+      }
 
       const timer = setTimeout(() => {
         setStep((prev) => {
@@ -49,22 +52,39 @@ export default function CarouselDemo() {
       return () => clearTimeout(timer);
     }
 
-    // Default timing for other formats
+    // Default timing for other formats - stop at final step
     const timings = [1500, 1800, 1500, 2500];
+    
+    // If we're at the final step, stop animating
+    if (step >= 3) {
+      setIsAnimating(false);
+      return;
+    }
+    
     const timer = setTimeout(() => {
-      setStep((prev) => (prev + 1) % 4);
+      setStep((prev) => {
+        if (prev >= 3) return prev;
+        return prev + 1;
+      });
     }, timings[step]);
 
     return () => clearTimeout(timer);
   }, [step, isAnimating, activeFormat, isGenerating]);
 
-  // Auto-play carousel (switch formats)
+  // Auto-play carousel (switch formats) - stops after one complete cycle
   useEffect(() => {
     if (!isAutoPlay) return;
 
     const carouselTimer = setTimeout(() => {
       const currentIndex = formats.findIndex(f => f.id === activeFormat);
       const nextIndex = (currentIndex + 1) % formats.length;
+      
+      // Stop auto-play after completing one full cycle (when returning to first format)
+      if (nextIndex === 0 && currentIndex === formats.length - 1) {
+        setIsAutoPlay(false);
+        return;
+      }
+      
       setActiveFormat(formats[nextIndex].id);
       setStep(0);
     }, 14000); // Switch format every 14 seconds (longer for 4 formats)
@@ -76,8 +96,8 @@ export default function CarouselDemo() {
     setActiveFormat(format);
     setStep(0);
     setIsGenerating(false);
-    setIsAutoPlay(false);
-    setTimeout(() => setIsAutoPlay(true), 15000); // Resume auto-play after 15s
+    setIsAnimating(true); // Restart animation for the new format
+    setIsAutoPlay(false); // Stop auto-switching when user manually selects
   };
 
   const handleGenerateSong = () => {
@@ -87,20 +107,28 @@ export default function CarouselDemo() {
     setIsAutoPlay(false); // Pause carousel while this flow plays out
   };
 
-  const nextFormat = () => {
-    const currentIndex = formats.findIndex(f => f.id === activeFormat);
-    const nextIndex = (currentIndex + 1) % formats.length;
-    goToFormat(formats[nextIndex].id);
-  };
-
-  const prevFormat = () => {
-    const currentIndex = formats.findIndex(f => f.id === activeFormat);
-    const prevIndex = (currentIndex - 1 + formats.length) % formats.length;
-    goToFormat(formats[prevIndex].id);
-  };
-
   return (
     <div className="max-w-full sm:max-w-3xl lg:max-w-6xl mx-auto px-2 sm:px-0">
+      {/* Format selector - prominently shown above carousel */}
+      <div className="mb-8 sm:mb-10 flex justify-center">
+        <div className="inline-flex flex-wrap items-center justify-center gap-2 glass-effect rounded-xl p-1.5 shadow-lg">
+          {formats.map((format) => (
+            <button
+              key={format.id}
+              onClick={() => goToFormat(format.id)}
+              className={`px-4 sm:px-5 py-2.5 sm:py-3 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-300 ${
+                activeFormat === format.id
+                  ? 'bg-primary-500 text-white shadow-lg shadow-primary-500/30'
+                  : 'text-gray-400 hover:text-white hover:bg-white/5'
+              }`}
+            >
+              <span className="hidden sm:inline">{format.name}</span>
+              <span className="sm:hidden">{format.name.split(' ')[0]}</span>
+            </button>
+          ))}
+        </div>
+      </div>
+      
       {/* Mobile: scrollable inline chat demo (simplified) */}
       <div className="md:hidden mb-8">
         <div className="glass-effect rounded-2xl p-4 space-y-4">
@@ -191,45 +219,11 @@ export default function CarouselDemo() {
 
       {/* Desktop / tablet: full animated carousel */}
       <div className="relative hidden md:block">
-      {/* Format Indicator */}
-      <div className="text-center mb-6 sm:mb-8">
-        <div className="inline-flex items-center gap-2 sm:gap-3 glass-effect rounded-full px-4 sm:px-6 py-2 sm:py-3 max-w-full">
-          <div className="w-2 h-2 rounded-full bg-primary-500 animate-pulse flex-shrink-0"></div>
-          <span className="text-xs sm:text-sm font-semibold text-white truncate">
-            {formats.find(f => f.id === activeFormat)?.name}
-          </span>
-          <span className="hidden sm:inline text-xs text-gray-400 truncate">
-            {formats.find(f => f.id === activeFormat)?.description}
-          </span>
-        </div>
-      </div>
-
       {/* Demo Container */}
       <div className="glass-effect rounded-2xl sm:rounded-3xl p-4 sm:p-8 md:p-12 relative overflow-hidden">
         {/* Background glow effects */}
         <div className="absolute -top-20 -right-20 w-64 h-64 bg-primary-500/20 rounded-full blur-3xl"></div>
         <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-accent-500/20 rounded-full blur-3xl"></div>
-
-        {/* Navigation Arrows - visible on all screens but positioned better on mobile */}
-        <button
-          onClick={prevFormat}
-          className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 lg:w-12 lg:h-12 glass-effect hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-all duration-300 group shadow-lg"
-          aria-label="Previous format"
-        >
-          <svg className="w-5 h-5 sm:w-6 sm:h-6 group-hover:scale-110 transition-transform" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
-            <path d="M15 19l-7-7 7-7" />
-          </svg>
-        </button>
-
-        <button
-          onClick={nextFormat}
-          className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 lg:w-12 lg:h-12 glass-effect hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-all duration-300 group shadow-lg"
-          aria-label="Next format"
-        >
-          <svg className="w-5 h-5 sm:w-6 sm:h-6 group-hover:scale-110 transition-transform" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
-            <path d="M9 5l7 7-7 7" />
-          </svg>
-        </button>
 
         <div className="relative z-10 space-y-6">
           {/* User Query - Different for Generation Format */}
@@ -809,25 +803,19 @@ export default function CarouselDemo() {
         </div>
       </div>
 
-      {/* Carousel Dots - Improved for mobile */}
-      <div className="flex justify-center gap-2 sm:gap-3 mt-6 sm:mt-8 flex-wrap px-4">
+      {/* Progress indicator dots - minimal */}
+      <div className="flex justify-center gap-2 mt-6">
         {formats.map((format) => (
           <button
             key={format.id}
             onClick={() => goToFormat(format.id)}
-            className="group flex flex-col items-center gap-1 sm:gap-2"
-          >
-            <div
-              className={`transition-all duration-300 rounded-full ${
-                activeFormat === format.id
-                  ? 'w-10 sm:w-12 h-2 bg-primary-500'
-                  : 'w-2 h-2 bg-gray-600 hover:bg-gray-500'
-              }`}
-            />
-            {activeFormat === format.id && (
-              <span className="text-xs text-gray-400 font-medium text-center max-w-[80px] sm:max-w-none">{format.name}</span>
-            )}
-          </button>
+            className={`transition-all duration-300 rounded-full ${
+              activeFormat === format.id
+                ? 'w-8 h-2 bg-primary-500'
+                : 'w-2 h-2 bg-gray-600 hover:bg-gray-500'
+            }`}
+            aria-label={`View ${format.name}`}
+          />
         ))}
       </div>
 
