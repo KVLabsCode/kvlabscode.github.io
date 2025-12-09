@@ -1,0 +1,139 @@
+"use strict";var kovio=(()=>{var g=(n,r)=>()=>(r||n((r={exports:{}}).exports,r),r.exports);var E=g((C,d)=>{var m="https://chat-ad-network.vercel.app/",l="kovio-ad-container";function b(){let n=document.getElementsByTagName("script");for(let r=0;r<n.length;r++){let e=n[r].getAttribute("src");if(e)try{let i=new URL(e,window.location.href).searchParams.get("token");if(i)return i}catch{let o=e.match(/[?&]token=([^&]+)/);if(o&&o[1])return o[1]}}return null}async function h(n,r){let t=new URL("/api/ads",m);t.searchParams.set("keyword",r),t.searchParams.set("publisher_id",n);try{let e=await fetch(t.toString(),{method:"GET",headers:{"Content-Type":"application/json"},mode:"cors"});if(!e.ok){if(e.status===404)return null;throw new Error(`Failed to fetch ad: ${e.statusText}`)}let o=await e.json(),i=null;return o.ads&&Array.isArray(o.ads)&&o.ads.length>0?i=o.ads[0]:i=o.ad||o||null,i}catch(e){return console.error("Error fetching ad:",e),null}}function f(n){n.impression_url&&fetch(n.impression_url,{method:"GET",headers:{"Content-Type":"application/json"}}).catch(()=>{})}function u(n){n.click_url&&fetch(n.click_url,{method:"GET",headers:{"Content-Type":"application/json"}}).catch(()=>{})}function y(n,r){if(!n.matched_keyword)return!0;let t=r.toLowerCase().split(",").map(o=>o.trim()),e=n.matched_keyword.toLowerCase().trim();return t.includes(e)}function x(n){return n==="light"?{background:"#F5F5F5",backgroundHover:"#E5E5E5",border:"#D1D1D6",borderHover:"#C7C7CC",text:"#000000",textSecondary:"#3C3C43",badgeBackground:"#E5E5EA",badgeText:"#3C3C43",buttonBackground:"#007AFF",buttonText:"#FFFFFF",buttonHover:"#0051D5"}:{background:"#2C2C2E",backgroundHover:"#343436",border:"#38383A",borderHover:"#48484A",text:"#FFFFFF",textSecondary:"#E5E5EA",badgeBackground:"#1C1C1E",badgeText:"#8E8E93",buttonBackground:"#FFFFFF",buttonText:"#000000",buttonHover:"#F5F5F5"}}function k(n,r,t){let e=document.createElement("div");e.style.cssText=`
+    padding: 10px 12px;
+    margin: 8px 0;
+    background-color: ${t.background};
+    border-radius: 10px;
+    border: 1px solid ${t.border};
+    transition: all 0.2s ease;
+    cursor: pointer;
+  `,e.addEventListener("click",()=>{u(r);let o=r.click_url||r.target_url;window.open(o,"_blank","noopener,noreferrer")}),e.addEventListener("mouseenter",()=>{e.style.backgroundColor=t.backgroundHover,e.style.borderColor=t.borderHover}),e.addEventListener("mouseleave",()=>{e.style.backgroundColor=t.background,e.style.borderColor=t.border}),e.innerHTML=`
+    <div style="position: relative;">
+      <span style="
+        position: absolute;
+        top: 0;
+        right: 0;
+        font-size: 10px;
+        color: ${t.badgeText};
+        background-color: ${t.badgeBackground};
+        padding: 3px 6px;
+        border-radius: 8px;
+        font-weight: 500;
+        letter-spacing: 0.2px;
+        flex-shrink: 0;
+      ">Ad</span>
+      <div style="padding-right: 50px;">
+        <strong style="
+          font-size: 13px;
+          color: ${t.text};
+          font-weight: 600;
+          line-height: 1.4;
+          display: block;
+          margin-bottom: 4px;
+        ">${r.title}</strong>
+        <span style="
+          font-size: 13px;
+          color: ${t.textSecondary};
+          line-height: 1.4;
+          display: block;
+        ">${r.message}</span>
+      </div>
+    </div>
+  `,n.innerHTML="",n.appendChild(e)}function v(n,r,t){let e=document.createElement("div");e.style.cssText=`
+    padding: 12px;
+    margin: 8px 0;
+    background-color: ${t.background};
+    border-radius: 10px;
+    border: 1px solid ${t.border};
+    transition: all 0.2s ease;
+  `,e.addEventListener("mouseenter",()=>{e.style.backgroundColor=t.backgroundHover,e.style.borderColor=t.borderHover}),e.addEventListener("mouseleave",()=>{e.style.backgroundColor=t.background,e.style.borderColor=t.border});let o=r.image_url?`
+    <div style="
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      border-radius: 6px;
+      overflow: hidden;
+      background-color: ${t.badgeBackground};
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    ">
+      <img
+        src="${r.image_url}"
+        alt="${r.title}"
+        style="width: 100%; height: 100%; object-fit: cover;"
+        onerror="this.parentElement.style.display='none'"
+      />
+    </div>
+  `:"";e.innerHTML=`
+    <div style="position: relative;">
+      <div style="
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 8px;
+      ">
+        <div style="flex: 1; min-width: 0;">
+          <div style="
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 6px;
+          ">
+            ${o}
+            <strong style="
+              font-size: 14px;
+              color: ${t.text};
+              font-weight: 600;
+              line-height: 1.3;
+              flex: 1;
+              min-width: 0;
+            ">${r.title}</strong>
+          </div>
+          <div>
+            <span style="
+              font-size: 13px;
+              color: ${t.textSecondary};
+              line-height: 1.4;
+              display: block;
+            ">${r.message}</span>
+          </div>
+        </div>
+        <div style="flex-shrink: 0; display: flex; align-items: center;">
+          <a
+            href="${r.click_url||r.target_url}"
+            style="
+              display: inline-block;
+              padding: 8px 20px;
+              background-color: ${t.buttonBackground};
+              color: ${t.buttonText};
+              border: none;
+              border-radius: 20px;
+              font-size: 14px;
+              font-weight: 600;
+              cursor: pointer;
+              transition: all 0.2s ease;
+              text-align: center;
+              text-decoration: none;
+              white-space: nowrap;
+              line-height: 1.2;
+            "
+            onmouseenter="this.style.backgroundColor='${t.buttonHover}'; this.style.transform='scale(1.02)'"
+            onmouseleave="this.style.backgroundColor='${t.buttonBackground}'; this.style.transform='scale(1)'"
+          >Learn more</a>
+        </div>
+      </div>
+      <div style="display: flex; justify-content: flex-end;">
+        <span style="
+          font-size: 10px;
+          color: ${t.badgeText};
+          background-color: ${t.badgeBackground};
+          padding: 3px 6px;
+          border-radius: 8px;
+          font-weight: 500;
+          letter-spacing: 0.2px;
+          flex-shrink: 0;
+        ">Ad</span>
+      </div>
+    </div>
+  `;let i=e.querySelector("a");i&&i.addEventListener("click",s=>{s.preventDefault(),u(r),window.open(r.click_url||r.target_url,"_blank","noopener,noreferrer")}),n.innerHTML="",n.appendChild(e)}function w(n,r){let t=!1,e=new IntersectionObserver(o=>{o.forEach(i=>{i.isIntersecting&&!t&&(t=!0,f(r),e.disconnect())})},{threshold:.5,rootMargin:"0px"});e.observe(n),window.addEventListener("beforeunload",()=>{e.disconnect()})}async function p(n,r="dark",t="standard",e){let o=b();if(!o){console.error("Kovio SDK: Publisher ID not found. Make sure the script tag includes token parameter.");return}if(!n){console.error("Kovio SDK: Keyword is required.");return}let i=document.getElementById(e||l);if(!i){console.error(`Kovio SDK: Container element with id "${e||l}" not found.`);return}i.innerHTML="";try{let s=await h(o,n);if(!s||!y(s,n))return;let a=x(r);t==="small"?k(i,s,a):v(i,s,a),w(i,s)}catch(s){console.error("Kovio SDK: Error processing ad:",s)}}function c(){typeof window<"u"&&(window.kovio={process:p})}typeof document<"u"&&(document.readyState==="loading"?document.addEventListener("DOMContentLoaded",c):c());typeof d<"u"&&d.exports&&(d.exports={kovio:{process:p}})});return E();})();
+
