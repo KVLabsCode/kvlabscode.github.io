@@ -425,7 +425,6 @@ export default function CarouselDemo() {
                   </div>
                 )}
               </>
-            )}
           </div>
         </div>
       </div>
