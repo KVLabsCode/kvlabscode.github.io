@@ -34,7 +34,7 @@ export default function Home() {
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-400 opacity-75"></span>
                     <span className="relative inline-flex rounded-full h-3 w-3 bg-primary-500"></span>
                   </span>
-                  <span className="text-sm text-gray-300 font-medium">Now in Early Access</span>
+                  <span className="text-sm text-gray-300 font-medium">AI hype is high, but profitability remains elusive for most players!</span>
                 </div>
                 <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 animate-fade-in leading-tight tracking-tight">
                   Monetize Your
