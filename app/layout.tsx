@@ -23,6 +23,18 @@ export default function RootLayout({
       <body className={inter.className} suppressHydrationWarning>
         {children}
         <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-65LTH5JML5"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-65LTH5JML5');
+          `}
+        </Script>
+        <Script
           src="https://cloud.umami.is/script.js"
           data-website-id="0ae072c1-e117-4757-9f76-79ad6b16c86e"
           strategy="afterInteractive"
