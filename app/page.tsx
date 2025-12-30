@@ -1,537 +1,576 @@
 import Navbar from '@/components/layout/navbar';
 import Footer from '@/components/layout/footer';
-import CaseStudyCard from '@/components/cards/case-study-card';
-import CarouselDemo from '@/components/demo/carousel-demo';
-import { caseStudies } from '@/lib/case-studies';
 import Link from 'next/link';
 
-// Toggle these to show/hide marketing sections without deleting code
-const SHOW_TRUSTED_BY_SECTION = false;
-const SHOW_BEYOND_EXPECTATIONS_SECTION = false;
-const SHOW_CASE_STUDIES_SECTION = false;
-
 export default function Home() {
-  const featuredCaseStudies = caseStudies.slice(0, 2);
-
   return (
     <>
       <Navbar />
 
-      <main className="min-h-screen">
-        {/* Hero Section */}
-        <section className="relative pt-32 pb-24 px-4 sm:px-6 lg:px-8 overflow-hidden min-h-[90vh] flex items-center">
-          {/* Enhanced Background gradient with animated blobs */}
-          <div className="absolute inset-0 bg-gradient-to-br from-primary-700/30 via-slate-900/50 to-accent-700/30 pointer-events-none"></div>
-          <div className="absolute top-20 left-10 w-96 h-96 bg-primary-500/20 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
-
-          <div className="max-w-7xl mx-auto relative z-10 w-full">
-            <div className="grid gap-12 lg:gap-16 lg:grid-cols-2 items-center">
-              {/* Hero Copy */}
-              <div className="text-center lg:text-left max-w-xl mx-auto lg:mx-0">
-                <div className="inline-flex items-center gap-2 px-4 py-2 glass-effect rounded-full mb-6 animate-fade-in">
-                  <span className="relative flex h-3 w-3">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-400 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-3 w-3 bg-primary-500"></span>
-                  </span>
-                  <span className="text-sm text-gray-300 font-medium">Now in Early Access</span>
-                </div>
-                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 animate-fade-in leading-tight tracking-tight">
-                  Monetize Your
-                  <br />
-                  <span className="gradient-text drop-shadow-lg">AI Solutions</span>
-                </h1>
-                <p className="text-lg sm:text-xl md:text-2xl text-gray-300 mb-10 animate-slide-up max-w-xl leading-relaxed">
-                  Seamless, contextual ads that turn AI conversations into revenue without breaking the user experience.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start animate-slide-up">
-                  <Link href="/waitlist" className="group btn-primary text-base sm:text-lg px-8 sm:px-10 py-4 sm:py-5 shadow-xl hover:shadow-primary-500/50 transition-all duration-300 transform hover:scale-105">
-                    <span className="flex items-center justify-center gap-2">
-                      Get Started
-                      <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
-                        <path d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                      </svg>
-                    </span>
-                  </Link>
-                  <a href="https://docs.kovio.dev/" target="_blank" rel="noopener noreferrer" className="btn-secondary text-base sm:text-lg px-8 sm:px-10 py-4 sm:py-5 hover:bg-white/15 transition-all duration-300">
-                    View Docs
-                  </a>
-                </div>
+      <main className="min-h-screen bg-white">
+        {/* Hero Section - Mobile Optimized */}
+        <section className="relative pt-24 sm:pt-32 pb-16 sm:pb-20 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-12 sm:mb-16">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 bg-purple-50 border border-purple-100 rounded-full mb-6 sm:mb-8">
+                <span className="w-2 h-2 rounded-full bg-purple-500 animate-pulse"></span>
+                <span className="text-xs sm:text-sm text-purple-900 font-medium">Now in Early Access</span>
               </div>
 
-              {/* Chat Monetization Preview */}
-              <div className="hidden lg:block">
-                <div className="relative max-w-md ml-auto animate-float">
-                  {/* Glow */}
-                  <div className="absolute -inset-10 bg-gradient-to-br from-primary-500/20 via-accent-500/15 to-emerald-400/10 blur-3xl"></div>
-
-                  <div className="relative space-y-4">
-                    {/* User message */}
-                    <div className="flex justify-start">
-                      <div className="max-w-[80%] rounded-2xl rounded-bl-sm bg-white/10 border border-white/15 px-4 py-3 shadow-lg">
-                        <p className="text-sm text-gray-100">
-                          “I need a simple way to track my startup’s runway and burn rate.”
-                        </p>
-                      </div>
-                    </div>
-
-                    {/* AI response */}
-                    <div className="flex justify-end">
-                      <div className="max-w-[80%] rounded-2xl rounded-br-sm bg-slate-900/90 border border-primary-500/40 px-4 py-3 shadow-lg">
-                        <p className="text-sm text-gray-100 mb-1">
-                          You can use a lightweight finance dashboard that auto-updates from your bank and payroll.
-                        </p>
-                        <p className="text-xs text-primary-300">Powered by your AI assistant</p>
-                      </div>
-                    </div>
-
-                    {/* Sponsored Ad inside chat */}
-                    <div className="flex justify-end">
-                      <div className="max-w-[80%] rounded-2xl bg-gradient-to-br from-emerald-500/15 via-primary-500/10 to-accent-500/15 border border-emerald-400/40 px-4 py-3 shadow-xl">
-                        <div className="flex items-center gap-2 mb-2">
-                          <span className="px-2 py-0.5 text-[10px] font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-400/40">
-                            SPONSORED
-                          </span>
-                          <span className="text-xs text-gray-400">Matched to this conversation in real time</span>
-                        </div>
-                        <p className="text-sm text-gray-100 font-medium mb-1">
-                          Try FlowFinance – automated runway tracking for SaaS startups.
-                        </p>
-                        <p className="text-xs text-gray-300 mb-3">
-                          Connect Stripe, bank accounts, and payroll in under 5 minutes.
-                        </p>
-                        <div className="flex items-center justify-between">
-                          <div>
-                            <p className="text-xs text-gray-400">flowfinance.ai</p>
-                            <p className="text-xs text-emerald-300 font-semibold">+42% higher LTV from Kovio traffic</p>
-                          </div>
-                          <button className="px-3 py-1.5 text-xs font-semibold rounded-lg bg-emerald-500 hover:bg-emerald-400 text-gray-900 transition-colors">
-                            Learn more
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Small metrics strip */}
-                    <div className="mt-4 flex items-center gap-4 text-xs text-gray-400">
-                      <div className="flex items-center gap-1">
-                        <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
-                        <span>94% session retention</span>
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <span className="w-2 h-2 rounded-full bg-primary-400"></span>
-                        <span>+3.2x click‑through on sponsored answers</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-serif font-normal text-gray-900 mb-6 sm:mb-8 leading-tight px-2">
+                AI that runs your entire ad stack
+              </h1>
+              
+              <p className="text-lg sm:text-xl md:text-2xl text-gray-600 mb-8 sm:mb-12 max-w-3xl mx-auto leading-relaxed px-2">
+                Agentic AI that manages, operates, and optimizes AdMob, mediation platforms, and ad ops workflows—automatically.
+              </p>
+              
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4">
+                <Link 
+                  href="/waitlist" 
+                  className="w-full sm:w-auto px-8 py-4 bg-purple-600 hover:bg-purple-700 active:bg-purple-800 text-white font-medium rounded-lg transition-colors text-base sm:text-lg text-center"
+                >
+                  Get early access →
+                </Link>
+                <a 
+                  href="#how-it-works" 
+                  className="w-full sm:w-auto px-8 py-4 bg-white border border-gray-200 hover:border-gray-300 text-gray-900 font-medium rounded-lg transition-colors text-base sm:text-lg text-center"
+                >
+                  How it works
+                </a>
               </div>
             </div>
           </div>
         </section>
 
-        {/* How It Works Section (Publishers - Ad Formats) */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-black/40 backdrop-blur-sm relative overflow-hidden">
-          {/* Decorative elements */}
-          <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-transparent via-primary-500/20 to-transparent"></div>
-          <div className="absolute top-0 right-1/4 w-px h-full bg-gradient-to-b from-transparent via-accent-500/20 to-transparent"></div>
-          
+        {/* What It Does - Mobile Optimized Cards */}
+        <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
           <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-12 md:mb-16">
-              <div className="inline-block px-4 py-2 glass-effect rounded-full mb-4">
-                <span className="text-sm text-primary-400 font-semibold">FOR PUBLISHERS</span>
-              </div>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 tracking-tight">
-                How It Works
+            <div className="text-center mb-12 sm:mb-16">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-normal text-gray-900 mb-4 sm:mb-6 px-2">
+                The agent manages your entire ad stack
               </h2>
-              <p className="text-base sm:text-lg md:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
-                Multiple ad formats that seamlessly integrate into your AI assistant or chatbot experience.
+              <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto px-2">
+                From AdMob configuration to mediation optimization—fully automated
               </p>
             </div>
 
-            <CarouselDemo />
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+              {/* Card 1 */}
+              <div className="bg-white rounded-xl sm:rounded-2xl p-6 sm:p-8 border border-gray-200 hover:border-purple-200 hover:shadow-lg transition-all text-center">
+                <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 sm:mb-6 bg-purple-50 rounded-xl sm:rounded-2xl flex items-center justify-center">
+                  <span className="text-4xl sm:text-5xl">👁️</span>
           </div>
-        </section>
-
-        {/* Trusted By Section (hidden by default; set SHOW_TRUSTED_BY_SECTION to true to show) */}
-        {SHOW_TRUSTED_BY_SECTION && (
-          <section className="py-20 px-4 sm:px-6 lg:px-8">
-            <div className="max-w-7xl mx-auto">
-              <div className="text-center mb-12">
-                <p className="text-sm text-gray-500 uppercase tracking-wider mb-8">
-                  Trusted by Top AI Apps
+                <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2 sm:mb-3">Monitors</h3>
+                <p className="text-gray-600 leading-relaxed text-sm">
+                  Watches all ad networks, mediation platforms, and performance metrics 24/7
                 </p>
-                
-                {/* Partner Logos Grid */}
-                <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center justify-items-center opacity-60 mb-16">
-                  {[...Array(6)].map((_, i) => (
-                    <div key={i} className="w-full h-16 glass-effect rounded-lg flex items-center justify-center hover:opacity-100 transition-opacity duration-300">
-                      <div className="w-12 h-12 bg-gradient-to-br from-primary-500/30 to-accent-500/30 rounded-lg"></div>
-                    </div>
-                  ))}
+              </div>
+
+              {/* Card 2 */}
+              <div className="bg-white rounded-xl sm:rounded-2xl p-6 sm:p-8 border border-gray-200 hover:border-purple-200 hover:shadow-lg transition-all text-center">
+                <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 sm:mb-6 bg-blue-50 rounded-xl sm:rounded-2xl flex items-center justify-center">
+                  <span className="text-4xl sm:text-5xl">⚙️</span>
                 </div>
+                <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2 sm:mb-3">Configures</h3>
+                <p className="text-gray-600 leading-relaxed text-sm">
+                  Manages AdMob settings, mediation waterfalls, and ad ops workflows via API
+                </p>
               </div>
               
-              {/* Stats Grid */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
-                <div className="text-center glass-effect rounded-xl p-8 hover:bg-white/10 transition-all duration-300 group">
-                  <div className="text-5xl font-bold gradient-text mb-3 group-hover:scale-110 transition-transform">5x</div>
-                  <div className="text-gray-400 font-medium">Higher Payouts</div>
+              {/* Card 3 */}
+              <div className="bg-white rounded-xl sm:rounded-2xl p-6 sm:p-8 border border-gray-200 hover:border-purple-200 hover:shadow-lg transition-all text-center">
+                <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 sm:mb-6 bg-emerald-50 rounded-xl sm:rounded-2xl flex items-center justify-center">
+                  <span className="text-4xl sm:text-5xl">📈</span>
                 </div>
-                <div className="text-center glass-effect rounded-xl p-8 hover:bg-white/10 transition-all duration-300 group">
-                  <div className="text-5xl font-bold gradient-text mb-3 group-hover:scale-110 transition-transform">100%</div>
-                  <div className="text-gray-400 font-medium">Premium Ads</div>
+                <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2 sm:mb-3">Optimizes</h3>
+                <p className="text-gray-600 leading-relaxed text-sm">
+                  Continuously tunes floors, formats, and mediation strategies for maximum revenue
+                </p>
                 </div>
-                <div className="text-center glass-effect rounded-xl p-8 hover:bg-white/10 transition-all duration-300 group">
-                  <div className="text-5xl font-bold gradient-text mb-3 group-hover:scale-110 transition-transform">40%</div>
-                  <div className="text-gray-400 font-medium">Revenue Increase</div>
+
+              {/* Card 4 */}
+              <div className="bg-white rounded-xl sm:rounded-2xl p-6 sm:p-8 border border-gray-200 hover:border-purple-200 hover:shadow-lg transition-all text-center">
+                <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 sm:mb-6 bg-purple-50 rounded-xl sm:rounded-2xl flex items-center justify-center">
+                  <span className="text-4xl sm:text-5xl">🛡️</span>
                 </div>
-                <div className="text-center glass-effect rounded-xl p-8 hover:bg-white/10 transition-all duration-300 group">
-                  <div className="text-5xl font-bold gradient-text mb-3 group-hover:scale-110 transition-transform">99.9%</div>
-                  <div className="text-gray-400 font-medium">User Retention</div>
+                <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2 sm:mb-3">Protects</h3>
+                <p className="text-gray-600 leading-relaxed text-sm">
+                  Validates every change against policies to prevent violations and account issues
+                </p>
                 </div>
               </div>
             </div>
           </section>
-        )}
 
-        {/* Benefits Section */}
-        <section id="features" className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-          {/* Background gradient */}
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary-900/5 to-transparent pointer-events-none"></div>
-          
-          <div className="max-w-7xl mx-auto relative z-10">
-            <div className="text-center mb-14">
-              <div className="inline-block px-4 py-2 glass-effect rounded-full mb-4">
-                <span className="text-sm text-accent-400 font-semibold">WHY KOVIO</span>
-              </div>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 tracking-tight">
-                Maximize Your AI App's Revenue
+        {/* How It Works - Mobile Optimized */}
+        <section id="how-it-works" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12 sm:mb-16">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-normal text-gray-900 mb-4 sm:mb-6 px-2">
+                How it works
               </h2>
-              <p className="text-base sm:text-lg md:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
-                The only scalable monetization solution built for AI-first applications
+              <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto px-2">
+                Connect your ad stack, instruct the agent, and watch it optimize
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-              {/* Scale Up Revenue */}
-              <div className="glass-effect-premium rounded-2xl p-6 sm:p-8 hover:bg-white/10 transition-all duration-300 group relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-primary-500/10 rounded-full blur-3xl group-hover:bg-primary-500/20 transition-all duration-500"></div>
-                <div className="relative z-10">
-                  <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-primary-500 to-primary-600 rounded-xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg shadow-primary-500/30">
-                    <svg className="w-6 h-6 sm:w-7 sm:h-7 text-white" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
-                      <path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
+            <div className="space-y-10 sm:space-y-12">
+              {/* Step 1 - Connect Stack */}
+              <div className="grid md:grid-cols-2 gap-8 sm:gap-10 md:gap-12 items-center">
+                <div className="px-2">
+                  <div className="inline-flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+                    <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-purple-600 text-white font-bold flex items-center justify-center text-sm sm:text-base">1</div>
+                    <span className="text-xs sm:text-sm uppercase tracking-wide text-purple-600 font-semibold">Connect</span>
                   </div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 group-hover:text-primary-300 transition-colors">Scale Up Revenue</h3>
-                  <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
-                    Earn for every click while maintaining full control over your user experience. Go live in just 10 minutes.
+                  <h3 className="text-2xl sm:text-3xl font-semibold text-gray-900 mb-3 sm:mb-4">Connect your ad stack</h3>
+                  <p className="text-base sm:text-lg text-gray-600 leading-relaxed mb-3 sm:mb-4">
+                    Sign in with Google and grant API access to your AdMob, AppLovin MAX, and mediation platforms. The agent connects in seconds—no SDK, no code changes.
+                  </p>
+                  <p className="text-xs sm:text-sm text-gray-500">
+                    OAuth secure • API-only • Full account ownership
+                  </p>
+                </div>
+                <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 border border-purple-200">
+                  <div className="bg-white rounded-xl border border-gray-200 shadow-lg overflow-hidden">
+                    {/* Header */}
+                    <div className="bg-gray-50 border-b border-gray-200 px-4 py-3 flex items-center justify-between">
+                      <span className="text-sm font-semibold text-gray-700">Connected Networks</span>
+                      <span className="text-xs text-gray-500">API Access</span>
+                    </div>
+                    {/* List */}
+                    <div className="p-4 space-y-3">
+                      <div className="flex items-center justify-between p-3 bg-emerald-50 rounded-lg border border-emerald-200">
+                        <div className="flex items-center gap-3">
+                          <div className="w-8 h-8 rounded bg-emerald-500 flex items-center justify-center text-white font-bold text-sm">A</div>
+                          <div>
+                            <p className="text-sm font-semibold text-gray-900">Google AdMob</p>
+                            <p className="text-xs text-gray-500">Connected via OAuth</p>
+                          </div>
+                        </div>
+                        <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+                      </div>
+                      <div className="flex items-center justify-between p-3 bg-emerald-50 rounded-lg border border-emerald-200">
+                        <div className="flex items-center gap-3">
+                          <div className="w-8 h-8 rounded bg-blue-500 flex items-center justify-center text-white font-bold text-sm">M</div>
+                          <div>
+                            <p className="text-sm font-semibold text-gray-900">AppLovin MAX</p>
+                            <p className="text-xs text-gray-500">Connected via API</p>
+                          </div>
+                        </div>
+                        <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+                      </div>
+                      <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg border border-gray-200 opacity-50">
+                        <div className="flex items-center gap-3">
+                          <div className="w-8 h-8 rounded bg-gray-400 flex items-center justify-center text-white font-bold text-sm">I</div>
+                          <div>
+                            <p className="text-sm font-semibold text-gray-900">ironSource</p>
+                            <p className="text-xs text-gray-500">Coming soon</p>
+                          </div>
+                        </div>
+                </div>
+              </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Step 2 - Agent Chat */}
+              <div className="grid md:grid-cols-2 gap-8 sm:gap-10 md:gap-12 items-center">
+                <div className="order-2 md:order-1">
+                  <div className="bg-white rounded-xl sm:rounded-2xl border border-gray-200 shadow-xl overflow-hidden">
+                    {/* Chat Header */}
+                    <div className="border-b border-gray-200 px-4 sm:px-6 py-3 sm:py-4 bg-white">
+                      <div className="flex items-center gap-2 sm:gap-3">
+                        <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center shadow-md">
+                          <span className="text-lg sm:text-xl">🤖</span>
+                        </div>
+                        <div>
+                          <p className="text-sm sm:text-base font-semibold text-gray-900">Kovio Agent</p>
+                          <div className="flex items-center gap-1.5">
+                            <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+                            <p className="text-xs text-gray-500">Active now</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* Chat Messages */}
+                    <div className="h-72 sm:h-80 overflow-y-auto bg-white">
+                      {/* User Message 1 */}
+                      <div className="px-3 sm:px-4 md:px-6 py-4 sm:py-5 md:py-6 hover:bg-gray-50 transition-colors">
+                        <div className="flex gap-2 sm:gap-3 md:gap-4">
+                          <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gray-200 flex items-center justify-center flex-shrink-0 text-xs sm:text-sm font-semibold text-gray-600">
+                            Y
+                          </div>
+                          <div className="flex-1 pt-0.5 sm:pt-1">
+                            <p className="text-sm sm:text-base text-gray-900 leading-relaxed">Increase AdMob floors for banner ads by 15%</p>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Agent Response 1 */}
+                      <div className="px-3 sm:px-4 md:px-6 py-4 sm:py-5 md:py-6 bg-gray-50 hover:bg-gray-100 transition-colors">
+                        <div className="flex gap-2 sm:gap-3 md:gap-4">
+                          <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center flex-shrink-0 shadow-sm">
+                            <span className="text-sm sm:text-base">🤖</span>
+                          </div>
+                          <div className="flex-1 pt-0.5 sm:pt-1">
+                            <p className="text-sm sm:text-base text-gray-900 leading-relaxed mb-2 sm:mb-3">
+                              <span className="inline-flex items-center gap-1 sm:gap-1.5 text-emerald-600 font-medium text-xs sm:text-sm">
+                                <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="currentColor" viewBox="0 0 20 20">
+                                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                                </svg>
+                                Applied
+                              </span>
+                            </p>
+                            <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
+                              Floor increase applied to 8 ad units. Current eCPM adjusted from <span className="font-semibold text-gray-900">$2.40</span> to <span className="font-semibold text-emerald-600">$2.76</span>. Monitoring fill rate impact over the next 4 hours.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* User Message 2 */}
+                      <div className="px-3 sm:px-4 md:px-6 py-4 sm:py-5 md:py-6 hover:bg-gray-50 transition-colors">
+                        <div className="flex gap-2 sm:gap-3 md:gap-4">
+                          <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gray-200 flex items-center justify-center flex-shrink-0 text-xs sm:text-sm font-semibold text-gray-600">
+                            Y
+                          </div>
+                          <div className="flex-1 pt-0.5 sm:pt-1">
+                            <p className="text-sm sm:text-base text-gray-900 leading-relaxed">Optimize waterfall for interstitial ads</p>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Agent Response 2 */}
+                      <div className="px-3 sm:px-4 md:px-6 py-4 sm:py-5 md:py-6 bg-gray-50">
+                        <div className="flex gap-2 sm:gap-3 md:gap-4">
+                          <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center flex-shrink-0 shadow-sm">
+                            <span className="text-sm sm:text-base">🤖</span>
+                          </div>
+                          <div className="flex-1 pt-0.5 sm:pt-1">
+                            <p className="text-sm sm:text-base text-gray-900 leading-relaxed mb-2 sm:mb-3">
+                              <span className="inline-flex items-center gap-1 sm:gap-1.5 text-emerald-600 font-medium text-xs sm:text-sm">
+                                <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="currentColor" viewBox="0 0 20 20">
+                                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                                </svg>
+                                Optimized
+                              </span>
+                            </p>
+                            <p className="text-sm sm:text-base text-gray-700 leading-relaxed mb-2 sm:mb-3">
+                              Reordered mediation waterfall based on 7-day eCPM analysis. Fill rate improved from <span className="font-semibold text-gray-900">87%</span> to <span className="font-semibold text-emerald-600">94%</span>.
+                            </p>
+                            <div className="flex items-center gap-2 text-xs sm:text-sm">
+                              <span className="text-gray-500">Running A/B test:</span>
+                              <span className="px-2 py-0.5 bg-blue-100 text-blue-700 rounded text-xs font-medium">Variant testing</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* Input */}
+                    <div className="border-t border-gray-200 p-3 sm:p-4 bg-white">
+                      <div className="flex items-end gap-2 sm:gap-3">
+                        <div className="flex-1 bg-gray-100 rounded-lg sm:rounded-xl border border-gray-200 focus-within:border-purple-300 focus-within:ring-2 focus-within:ring-purple-100 transition-all">
+                          <input 
+                            type="text" 
+                            placeholder="Message Kovio Agent..."
+                            className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base bg-transparent text-gray-900 placeholder-gray-500 focus:outline-none"
+                            disabled
+                          />
+                        </div>
+                        <button className="px-3 sm:px-5 py-2 sm:py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-lg sm:rounded-xl font-medium transition-colors shadow-sm">
+                          <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                    </svg>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="order-1 md:order-2 px-2">
+                  <div className="inline-flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+                    <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-purple-600 text-white font-bold flex items-center justify-center text-sm sm:text-base">2</div>
+                    <span className="text-xs sm:text-sm uppercase tracking-wide text-purple-600 font-semibold">Instruct</span>
+                  </div>
+                  <h3 className="text-2xl sm:text-3xl font-semibold text-gray-900 mb-3 sm:mb-4">Talk to the agent</h3>
+                  <p className="text-base sm:text-lg text-gray-600 leading-relaxed mb-3 sm:mb-4">
+                    Use natural language to instruct the agent. "Increase floors," "optimize waterfall," "test new formats"—the agent understands and executes immediately.
+                  </p>
+                  <p className="text-xs sm:text-sm text-gray-500">
+                    Conversational interface • Instant execution • Full audit trail
                   </p>
                 </div>
               </div>
 
-              {/* Max LLM Performance */}
-              <div className="glass-effect-premium rounded-2xl p-6 sm:p-8 hover:bg-white/10 transition-all duration-300 group relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-accent-500/10 rounded-full blur-3xl group-hover:bg-accent-500/20 transition-all duration-500"></div>
-                <div className="relative z-10">
-                  <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-accent-500 to-accent-600 rounded-xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg shadow-accent-500/30">
-                    <svg className="w-6 h-6 sm:w-7 sm:h-7 text-white" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
-                      <path d="M13 10V3L4 14h7v7l9-11h-7z" />
-                    </svg>
+              {/* Step 3 - Dashboard */}
+              <div className="grid md:grid-cols-2 gap-8 sm:gap-10 md:gap-12 items-center">
+                <div className="px-2">
+                  <div className="inline-flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+                    <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-purple-600 text-white font-bold flex items-center justify-center text-sm sm:text-base">3</div>
+                    <span className="text-xs sm:text-sm uppercase tracking-wide text-purple-600 font-semibold">Monitor</span>
                   </div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 group-hover:text-accent-300 transition-colors">Max LLM Performance</h3>
-                  <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
-                    Ads served in milliseconds with zero latency impact. Your app stays lightning fast and responsive.
+                  <h3 className="text-2xl sm:text-3xl font-semibold text-gray-900 mb-3 sm:mb-4">Watch it optimize</h3>
+                  <p className="text-base sm:text-lg text-gray-600 leading-relaxed mb-3 sm:mb-4">
+                    The agent works 24/7—monitoring performance, running experiments, and optimizing your entire ad stack. Track results in real time from your dashboard.
+                  </p>
+                  <p className="text-xs sm:text-sm text-gray-500">
+                    Autonomous optimization • Real-time analytics • Policy-safe changes
                   </p>
                 </div>
+                <div className="bg-gradient-to-br from-emerald-50 to-emerald-100 rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 border border-emerald-200">
+                  <div className="bg-white rounded-lg sm:rounded-xl border border-gray-200 shadow-lg overflow-hidden">
+                    {/* Dashboard Header */}
+                    <div className="bg-gray-50 border-b border-gray-200 px-3 sm:px-4 py-2 sm:py-3">
+                      <p className="text-xs sm:text-sm font-semibold text-gray-700">Performance Dashboard</p>
+                    </div>
+                    {/* Metrics Grid */}
+                    <div className="p-3 sm:p-4 space-y-3 sm:space-y-4">
+                      <div className="grid grid-cols-2 gap-2 sm:gap-3">
+                        <div className="bg-gradient-to-br from-emerald-50 to-emerald-100 rounded-lg p-3 sm:p-4 border border-emerald-200">
+                          <p className="text-xs text-gray-600 mb-1">Revenue (24h)</p>
+                          <p className="text-xl sm:text-2xl font-bold text-gray-900">$12,847</p>
+                          <p className="text-xs text-emerald-600 font-semibold mt-1">↑ 42%</p>
+                        </div>
+                        <div className="bg-gray-50 rounded-lg p-3 sm:p-4 border border-gray-200">
+                          <p className="text-xs text-gray-600 mb-1">Fill Rate</p>
+                          <p className="text-xl sm:text-2xl font-bold text-gray-900">94.2%</p>
+                          <p className="text-xs text-blue-600 font-semibold mt-1">↑ 7%</p>
+                        </div>
+                      </div>
+                      <div className="bg-purple-50 rounded-lg p-3 sm:p-4 border border-purple-200">
+                        <div className="flex items-start justify-between mb-2">
+                          <div className="flex items-center gap-2">
+                            <span className="w-2 h-2 rounded-full bg-purple-500 animate-pulse"></span>
+                            <p className="text-xs font-semibold text-purple-900">Agent Active</p>
+                          </div>
+                          <span className="text-xs text-purple-600">Just now</span>
+                        </div>
+                        <p className="text-xs sm:text-sm text-gray-700">Adjusted 3 ad unit floors based on eCPM trends</p>
+                      </div>
+                      <div className="bg-emerald-50 rounded-lg p-3 sm:p-4 border border-emerald-200">
+                        <div className="flex items-center justify-between">
+                          <div>
+                            <p className="text-xs text-gray-600">Policy Status</p>
+                            <p className="text-base sm:text-lg font-bold text-emerald-700">All Clear ✓</p>
+                          </div>
+                          <span className="text-xl sm:text-2xl">🛡️</span>
+                        </div>
+                      </div>
               </div>
-
-              {/* Seamless UX */}
-              <div className="glass-effect-premium rounded-2xl p-6 sm:p-8 hover:bg-white/10 transition-all duration-300 group relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/10 rounded-full blur-3xl group-hover:bg-purple-500/20 transition-all duration-500"></div>
-                <div className="relative z-10">
-                  <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg shadow-purple-500/30">
-                    <svg className="w-6 h-6 sm:w-7 sm:h-7 text-white" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
-                      <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                    </svg>
                   </div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 group-hover:text-purple-300 transition-colors">Seamless UX</h3>
-                  <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
-                    Contextual ads that feel native to your app. Users get helpful information, not interruptions.
-                  </p>
-                </div>
-              </div>
-
-              {/* Instant SDK Integration */}
-              <div className="glass-effect-premium rounded-2xl p-6 sm:p-8 hover:bg-white/10 transition-all duration-300 group relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-500/10 rounded-full blur-3xl group-hover:bg-cyan-500/20 transition-all duration-500"></div>
-                <div className="relative z-10">
-                  <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg shadow-cyan-500/30">
-                    <svg className="w-6 h-6 sm:w-7 sm:h-7 text-white" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
-                      <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                    </svg>
-                  </div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 group-hover:text-cyan-300 transition-colors">Instant Integration</h3>
-                  <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
-                    Simple SDK setup with just a few lines of code. Available on all major platforms and frameworks.
-                  </p>
-                </div>
-              </div>
-
-              {/* Contextual & Native */}
-              <div className="glass-effect-premium rounded-2xl p-6 sm:p-8 hover:bg-white/10 transition-all duration-300 group relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-full blur-3xl group-hover:bg-emerald-500/20 transition-all duration-500"></div>
-                <div className="relative z-10">
-                  <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-green-500 to-emerald-500 rounded-xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg shadow-emerald-500/30">
-                    <svg className="w-6 h-6 sm:w-7 sm:h-7 text-white" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
-                      <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  </div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 group-hover:text-emerald-300 transition-colors">Contextual & Native</h3>
-                  <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
-                    AI-powered matching ensures ads are always relevant to the conversation and user intent.
-                  </p>
-                </div>
-              </div>
-
-              {/* Premium Network */}
-              <div className="glass-effect-premium rounded-2xl p-6 sm:p-8 hover:bg-white/10 transition-all duration-300 group relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-orange-500/10 rounded-full blur-3xl group-hover:bg-orange-500/20 transition-all duration-500"></div>
-                <div className="relative z-10">
-                  <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-orange-500 to-red-500 rounded-xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg shadow-orange-500/30">
-                    <svg className="w-6 h-6 sm:w-7 sm:h-7 text-white" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
-                      <path d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z" />
-                      <path d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z" />
-                    </svg>
-                  </div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 group-hover:text-orange-300 transition-colors">Premium Network</h3>
-                  <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
-                    Access to top-tier brands and advertisers. 100% premium ads with higher payouts.
-                  </p>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Integration Section */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
-                Integrate in Minutes
+        {/* Multi-Network - Mobile Optimized Scrolling Logos */}
+        <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12 sm:mb-16">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-normal text-gray-900 mb-4 sm:mb-6 px-2">
+                One login. Your entire ad stack managed.
               </h2>
-              <p className="text-base sm:text-lg md:text-xl text-gray-400 max-w-2xl mx-auto">
-                Start generating revenue with our intuitive SDK
+              <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto px-2">
+                The agent controls all networks via API—no code changes, no SDK installation
               </p>
             </div>
 
-            <div className="max-w-4xl mx-auto">
-              <div className="glass-effect rounded-2xl p-6 sm:p-8 md:p-12 overflow-hidden relative">
-                {/* Glow effect */}
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-32 bg-primary-500/20 blur-3xl"></div>
-                
-                <div className="relative">
-                  <div className="flex items-center gap-2 mb-4 sm:mb-6">
-                    <div className="flex gap-2">
-                      <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                      <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                      <div className="w-3 h-3 rounded-full bg-green-500"></div>
+            {/* Scrolling Logo Strip */}
+            <div className="relative overflow-hidden py-8 sm:py-12">
+              {/* Gradient Fade Edges */}
+              <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-r from-gray-50 to-transparent z-10"></div>
+              <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-l from-gray-50 to-transparent z-10"></div>
+              
+              {/* Scrolling Container */}
+              <div className="flex animate-scroll">
+                {/* First Set */}
+                <div className="flex items-center gap-8 sm:gap-12 md:gap-16 px-6 shrink-0">
+                  {/* Google AdMob */}
+                  <div className="px-6 sm:px-8 py-4 sm:py-5 bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-all min-w-[140px] sm:min-w-[180px]">
+                    <div className="h-8 sm:h-10 flex items-center justify-center">
+                      <img 
+                        src="/logos/admob-logo.svg" 
+                        alt="Google AdMob" 
+                        className="h-full w-auto object-contain max-w-[150px]"
+                      />
                     </div>
-                    <span className="text-gray-400 text-xs sm:text-sm ml-2 sm:ml-4">Install SDK</span>
                   </div>
-
-                  <div className="bg-black/50 rounded-xl p-4 sm:p-6 border border-white/10 mb-4 sm:mb-6">
-                    <pre className="text-xs sm:text-sm font-mono leading-relaxed overflow-x-auto">
-                      <code className="block">
-                        <span className="text-pink-400">npm install</span>
-                        <span className="text-gray-300"> @adinfra/sdk</span>
-                      </code>
-                    </pre>
-                  </div>
-
-                  <div className="flex items-center gap-2 mb-4 sm:mb-6">
-                    <div className="flex gap-2">
-                      <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                      <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                      <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                  
+                  {/* AppLovin MAX */}
+                  <div className="px-6 sm:px-8 py-4 sm:py-5 bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-all min-w-[140px] sm:min-w-[180px]">
+                    <div className="h-8 sm:h-10 flex items-center justify-center">
+                      <img 
+                        src="/logos/applovin-logo.svg" 
+                        alt="AppLovin MAX" 
+                        className="h-full w-auto object-contain max-w-[150px]"
+                      />
                     </div>
-                    <span className="text-gray-400 text-xs sm:text-sm ml-2 sm:ml-4">Add to your app</span>
                   </div>
-
-                  <div className="bg-black/50 rounded-xl p-4 sm:p-6 border border-white/10">
-                    <pre className="text-xs sm:text-sm font-mono leading-relaxed overflow-x-auto">
-                      <code className="block">
-                        <span className="text-purple-400">import</span>
-                        <span className="text-gray-300"> {'{ Kovio }'} </span>
-                        <span className="text-purple-400">from</span>
-                        <span className="text-green-400"> '@kovio/sdk'</span>
-                        <span className="text-gray-500">;</span>
-                        <br />
-                        <br />
-                        <span className="text-gray-500">// Initialize with your publisher ID</span>
-                        <br />
-                        <span className="text-cyan-400">Kovio</span>
-                        <span className="text-gray-300">.</span>
-                        <span className="text-yellow-400">init</span>
-                        <span className="text-gray-300">(</span>
-                        <span className="text-green-400">'your-publisher-id'</span>
-                        <span className="text-gray-300">);</span>
-                        <br />
-                        <br />
-                        <span className="text-gray-500">// Show contextual ad in your AI response</span>
-                        <br />
-                        <span className="text-purple-400">const</span>
-                        <span className="text-gray-300"> ad = </span>
-                        <span className="text-purple-400">await</span>
-                        <span className="text-gray-300"> </span>
-                        <span className="text-cyan-400">Kovio</span>
-                        <span className="text-gray-300">.</span>
-                        <span className="text-yellow-400">getAd</span>
-                        <span className="text-gray-300">({'{'}</span>
-                        <br />
-                        <span className="ml-4 text-gray-300">context</span>
-                        <span className="text-gray-500">:</span>
-                        <span className="text-gray-300"> userQuery</span>
-                        <span className="text-gray-500">,</span>
-                        <br />
-                        <span className="ml-4 text-gray-300">format</span>
-                        <span className="text-gray-500">:</span>
-                        <span className="text-green-400"> 'inline'</span>
-                        <br />
-                        <span className="text-gray-300">{'}'});</span>
-                      </code>
-                    </pre>
+                  
+                  {/* ironSource */}
+                  <div className="px-6 sm:px-8 py-4 sm:py-5 bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-all min-w-[140px] sm:min-w-[180px]">
+                    <div className="h-8 sm:h-10 flex items-center justify-center">
+                      <img 
+                        src="/logos/ironsource-logo.svg" 
+                        alt="ironSource" 
+                        className="h-full w-auto object-contain max-w-[150px]"
+                      />
+                    </div>
                   </div>
+                  
+                  {/* Unity Ads */}
+                  <div className="px-6 sm:px-8 py-4 sm:py-5 bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-all min-w-[140px] sm:min-w-[180px]">
+                    <div className="h-8 sm:h-10 flex items-center justify-center">
+                      <img 
+                        src="/logos/unity-logo.svg" 
+                        alt="Unity Ads" 
+                        className="h-full w-auto object-contain max-w-[150px]"
+                      />
+                    </div>
+                  </div>
+                  
+                  {/* Chartboost */}
+                  <div className="px-6 sm:px-8 py-4 sm:py-5 bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-all min-w-[140px] sm:min-w-[180px]">
+                    <div className="h-8 sm:h-10 flex items-center justify-center">
+                      <img 
+                        src="/logos/chartboost-logo.svg" 
+                        alt="Chartboost" 
+                        className="h-full w-auto object-contain max-w-[150px]"
+                      />
+                    </div>
+                  </div>
+                  
+                  {/* Vungle */}
+                  <div className="px-6 sm:px-8 py-4 sm:py-5 bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-all min-w-[140px] sm:min-w-[180px]">
+                    <div className="h-8 sm:h-10 flex items-center justify-center">
+                      <img 
+                        src="/logos/vungle-logo.svg" 
+                        alt="Vungle" 
+                        className="h-full w-auto object-contain max-w-[150px]"
+                      />
+                    </div>
+                  </div>
+                </div>
 
+                {/* Duplicate Set for Seamless Loop */}
+                <div className="flex items-center gap-8 sm:gap-12 md:gap-16 px-6 shrink-0">
+                  {/* Google AdMob */}
+                  <div className="px-6 sm:px-8 py-4 sm:py-5 bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-all min-w-[140px] sm:min-w-[180px]">
+                    <div className="h-8 sm:h-10 flex items-center justify-center">
+                      <img 
+                        src="/logos/admob-logo.svg" 
+                        alt="Google AdMob" 
+                        className="h-full w-auto object-contain max-w-[150px]"
+                      />
+                    </div>
+                  </div>
+                  
+                  {/* AppLovin MAX */}
+                  <div className="px-6 sm:px-8 py-4 sm:py-5 bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-all min-w-[140px] sm:min-w-[180px]">
+                    <div className="h-8 sm:h-10 flex items-center justify-center">
+                      <img 
+                        src="/logos/applovin-logo.svg" 
+                        alt="AppLovin MAX" 
+                        className="h-full w-auto object-contain max-w-[150px]"
+                      />
+                    </div>
+                  </div>
+                  
+                  {/* ironSource */}
+                  <div className="px-6 sm:px-8 py-4 sm:py-5 bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-all min-w-[140px] sm:min-w-[180px]">
+                    <div className="h-8 sm:h-10 flex items-center justify-center">
+                      <img 
+                        src="/logos/ironsource-logo.svg" 
+                        alt="ironSource" 
+                        className="h-full w-auto object-contain max-w-[150px]"
+                      />
+                    </div>
+                  </div>
+                  
+                  {/* Unity Ads */}
+                  <div className="px-6 sm:px-8 py-4 sm:py-5 bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-all min-w-[140px] sm:min-w-[180px]">
+                    <div className="h-8 sm:h-10 flex items-center justify-center">
+                      <img 
+                        src="/logos/unity-logo.svg" 
+                        alt="Unity Ads" 
+                        className="h-full w-auto object-contain max-w-[150px]"
+                      />
+                    </div>
+                  </div>
+                  
+                  {/* Chartboost */}
+                  <div className="px-6 sm:px-8 py-4 sm:py-5 bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-all min-w-[140px] sm:min-w-[180px]">
+                    <div className="h-8 sm:h-10 flex items-center justify-center">
+                      <img 
+                        src="/logos/chartboost-logo.svg" 
+                        alt="Chartboost" 
+                        className="h-full w-auto object-contain max-w-[150px]"
+                      />
+                    </div>
+                  </div>
+                  
+                  {/* Vungle */}
+                  <div className="px-6 sm:px-8 py-4 sm:py-5 bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-all min-w-[140px] sm:min-w-[180px]">
+                    <div className="h-8 sm:h-10 flex items-center justify-center">
+                      <img 
+                        src="/logos/vungle-logo.svg" 
+                        alt="Vungle" 
+                        className="h-full w-auto object-contain max-w-[150px]"
+                      />
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </section>
 
-        {/* Testimonials / Beyond Expectations (hidden by default; set SHOW_BEYOND_EXPECTATIONS_SECTION to true to show) */}
-        {SHOW_BEYOND_EXPECTATIONS_SECTION && (
-          <section className="py-20 px-4 sm:px-6 lg:px-8 bg-black/30">
-            <div className="max-w-7xl mx-auto">
-              <div className="text-center mb-16">
-                <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
-                  Beyond Expectations
-                </h2>
-              <p className="text-xl text-gray-400">
-                Kovio is powering the next generation of AI apps to build scalable, sustainable businesses
-              </p>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-                <div className="glass-effect rounded-2xl p-8 hover:bg-white/10 transition-all duration-300">
-                  <div className="flex items-start gap-4 mb-6">
-                    <div className="w-12 h-12 bg-gradient-to-br from-primary-500 to-accent-500 rounded-full flex-shrink-0"></div>
-                    <div>
-                      <div className="font-semibold text-white mb-1">Sarah Chen</div>
-                      <div className="text-sm text-gray-400">CEO @ AI Assistant Co</div>
-                    </div>
-                  </div>
-                <p className="text-gray-300 leading-relaxed">
-                  "Kovio helped us develop a new revenue stream that actually enhances user experience.
-                    The contextual ads are so relevant that users appreciate them. We've seen a 150% increase 
-                    in revenue without any drop in retention."
-                  </p>
+            {/* Key Points */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 mt-12 sm:mt-16 px-4">
+              <div className="text-center">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <svg className="w-6 h-6 sm:w-7 sm:h-7 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                  </svg>
                 </div>
-
-                <div className="glass-effect rounded-2xl p-8 hover:bg-white/10 transition-all duration-300">
-                  <div className="flex items-start gap-4 mb-6">
-                    <div className="w-12 h-12 bg-gradient-to-br from-accent-500 to-purple-500 rounded-full flex-shrink-0"></div>
-                    <div>
-                      <div className="font-semibold text-white mb-1">Marcus Rodriguez</div>
-                      <div className="text-sm text-gray-400">CTO @ ChatFlow</div>
-                    </div>
-                  </div>
-                  <p className="text-gray-300 leading-relaxed">
-                    "The integration was incredibly smooth - literally 10 minutes from SDK install to first ad. 
-                    The contextual matching is impressive, and our users haven't complained once. It just works."
-                  </p>
-                </div>
-
-                <div className="glass-effect rounded-2xl p-8 hover:bg-white/10 transition-all duration-300">
-                  <div className="flex items-start gap-4 mb-6">
-                    <div className="w-12 h-12 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-full flex-shrink-0"></div>
-                    <div>
-                      <div className="font-semibold text-white mb-1">Emily Watson</div>
-                      <div className="text-sm text-gray-400">Head of Product @ AI Search</div>
-                    </div>
-                  </div>
-                <p className="text-gray-300 leading-relaxed">
-                  "We were skeptical about adding ads to our AI assistant, but Kovio changed our minds.
-                    The ads are genuinely helpful to users and our monetization has scaled beautifully alongside 
-                    our user growth."
-                  </p>
-                </div>
-
-                <div className="glass-effect rounded-2xl p-8 hover:bg-white/10 transition-all duration-300">
-                  <div className="flex items-start gap-4 mb-6">
-                    <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-500 rounded-full flex-shrink-0"></div>
-                    <div>
-                      <div className="font-semibold text-white mb-1">David Park</div>
-                      <div className="text-sm text-gray-400">Founder @ SmartQuery</div>
-                    </div>
-                  </div>
-                <p className="text-gray-300 leading-relaxed">
-                  "By far our most engaged revenue source. Kovio delivers high-quality, contextual ads that
-                    convert quickly. It requires almost no work from us to optimize, and the dashboard makes 
-                    tracking performance effortless."
-                  </p>
-                </div>
-              </div>
-            </div>
-          </section>
-        )}
-
-        {/* Case Studies Preview (hidden by default; set SHOW_CASE_STUDIES_SECTION to true to show) */}
-        {SHOW_CASE_STUDIES_SECTION && (
-          <section id="proven-results" className="py-20 px-4 sm:px-6 lg:px-8">
-            <div className="max-w-7xl mx-auto">
-              <div className="text-center mb-12">
-                <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
-                  Case Studies
-                </h2>
-              <p className="text-xl text-gray-400">
-                See how leading AI apps scale with Kovio
-              </p>
-              </div>
-
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-                {featuredCaseStudies.map((caseStudy) => (
-                  <CaseStudyCard key={caseStudy.id} caseStudy={caseStudy} />
-                ))}
+                <h4 className="font-semibold text-gray-900 mb-2 text-sm sm:text-base">No lock-in</h4>
+                <p className="text-xs sm:text-sm text-gray-600">You own all accounts. Revoke access anytime.</p>
               </div>
 
               <div className="text-center">
-                <Link href="/case-studies" className="btn-secondary text-lg px-8 py-4 inline-block">
-                  View All Case Studies
-                </Link>
+                <div className="w-12 h-12 sm:w-14 sm:h-14 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <svg className="w-6 h-6 sm:w-7 sm:h-7 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                </div>
+                <h4 className="font-semibold text-gray-900 mb-2 text-sm sm:text-base">Instant connection</h4>
+                <p className="text-xs sm:text-sm text-gray-600">Link networks in seconds via OAuth.</p>
+              </div>
+
+              <div className="text-center">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <svg className="w-6 h-6 sm:w-7 sm:h-7 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                  </svg>
+                </div>
+                <h4 className="font-semibold text-gray-900 mb-2 text-sm sm:text-base">Easy expansion</h4>
+                <p className="text-xs sm:text-sm text-gray-600">Add new networks without code changes.</p>
               </div>
             </div>
-          </section>
-        )}
+          </div>
+        </section>
 
-        {/* Simple CTA Section */}
-        <section className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8">
+
+        {/* Final CTA - Mobile Optimized */}
+        <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center">
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
-              <Link href="/waitlist" className="w-full sm:w-auto btn-primary text-base sm:text-lg px-8 sm:px-10 py-3.5 sm:py-4 inline-flex items-center justify-center gap-2">
-                Get Started
-                <svg className="w-5 h-5" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
-                  <path d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                </svg>
-              </Link>
-              <a href="https://docs.kovio.dev/" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto btn-secondary text-base sm:text-lg px-8 sm:px-10 py-3.5 sm:py-4 inline-flex items-center justify-center gap-2">
-                View Docs
-                <svg className="w-5 h-5" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
-                  <path d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-                </svg>
-              </a>
-            </div>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-normal text-gray-900 mb-6 sm:mb-8 px-2">
+              Ready to let AI run your ad stack?
+            </h2>
+            <Link href="/waitlist" className="inline-block w-full sm:w-auto px-8 sm:px-10 py-4 bg-purple-600 hover:bg-purple-700 active:bg-purple-800 text-white font-medium rounded-lg transition-colors text-base sm:text-lg">
+              Get early access →
+            </Link>
           </div>
         </section>
       </main>

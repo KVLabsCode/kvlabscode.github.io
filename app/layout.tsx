@@ -6,10 +6,15 @@ import './globals.css';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Kovio | AI Ad Infrastructure for Chatbots',
-  description: 'Revolutionary ad infrastructure for AI. Enable publishers to monetize AI chatbots and advertisers to reach users in conversational interfaces.',
+  title: 'Kovio | Agentic AI for Mobile Ad Operations',
+  description: 'Agentic AI that manages, operates, and optimizes your entire ad stack—AdMob, mediation platforms, and ad ops workflows—automatically.',
   icons: {
     icon: '/favicon.svg',
+  },
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 5,
   },
 };
 
