@@ -14,28 +14,55 @@ const postFields = `
 `;
 
 export async function getAllPosts(): Promise<Post[]> {
-  const posts = await client.fetch(
-    `*[_type == "post"] | order(publishedAt desc) {
-      ${postFields}
-    }`
-  );
-  return posts;
+  if (!process.env.NEXT_PUBLIC_SANITY_PROJECT_ID) {
+    return [];
+  }
+  
+  try {
+    const posts = await client.fetch(
+      `*[_type == "post"] | order(publishedAt desc) {
+        ${postFields}
+      }`
+    );
+    return posts || [];
+  } catch (error) {
+    console.error('Error fetching posts:', error);
+    return [];
+  }
 }
 
 export async function getPostBySlug(slug: string): Promise<Post | null> {
-  const post = await client.fetch(
-    `*[_type == "post" && slug.current == $slug][0] {
-      ${postFields}
-    }`,
-    { slug }
-  );
-  return post || null;
+  if (!process.env.NEXT_PUBLIC_SANITY_PROJECT_ID) {
+    return null;
+  }
+  
+  try {
+    const post = await client.fetch(
+      `*[_type == "post" && slug.current == $slug][0] {
+        ${postFields}
+      }`,
+      { slug }
+    );
+    return post || null;
+  } catch (error) {
+    console.error('Error fetching post:', error);
+    return null;
+  }
 }
 
 export async function getPostSlugs(): Promise<string[]> {
-  const posts = await client.fetch(
-    `*[_type == "post"]{ "slug": slug.current }`
-  );
-  return posts.map((post: { slug: string }) => post.slug);
+  if (!process.env.NEXT_PUBLIC_SANITY_PROJECT_ID) {
+    return [];
+  }
+  
+  try {
+    const posts = await client.fetch(
+      `*[_type == "post"]{ "slug": slug.current }`
+    );
+    return posts ? posts.map((post: { slug: string }) => post.slug) : [];
+  } catch (error) {
+    console.error('Error fetching post slugs:', error);
+    return [];
+  }
 }
 

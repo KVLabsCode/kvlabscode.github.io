@@ -10,7 +10,7 @@ interface FAQItem {
 const faqs: FAQItem[] = [
   {
     question: 'Do I need to install an SDK or change my app code?',
-    answer: 'No. Kovio works entirely via API—connecting to your AdMob, MAX, and mediation platforms without any SDK installation or code changes. Just login with Google, grant API access, and the agent takes over.'
+    answer: 'No. Kovio works entirely via API - connecting to your AdMob, MAX, and mediation platforms without any SDK installation or code changes. Just login with Google, grant API access, and the agent takes over.'
   },
   {
     question: 'Who is Kovio built for?',

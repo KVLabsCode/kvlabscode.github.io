@@ -34,8 +34,8 @@ export default function Navbar() {
 
             <nav className={`sticky top-0 z-50 transition-all duration-300 ${
                 isScrolled
-                    ? 'bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm'
-                    : 'bg-white border-b border-gray-200'
+                    ? 'bg-white/80 backdrop-blur-md border-b border-white/20 shadow-lg shadow-black/5'
+                    : 'bg-white/60 backdrop-blur-sm border-b border-white/10'
             }`}>
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex justify-between items-center h-16">
@@ -50,19 +50,8 @@ export default function Navbar() {
                                 <Link href="/blog" className="text-gray-700 hover:text-gray-900 transition-colors">
                                     Blog
                                 </Link>
-                                <a href="https://docs.kovio.dev/" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-gray-900 transition-colors">
-                                    Docs
-                                </a>
                             </div>
                             <div className="flex items-center space-x-3 ml-8">
-                                <a 
-                                    href="https://www.dashboard.kovio.dev/" 
-                                    target="_blank" 
-                                    rel="noopener noreferrer"
-                                    className="px-4 py-2 text-gray-700 hover:text-gray-900 font-medium transition-colors"
-                                >
-                                    Login
-                                </a>
                                 <Link href="/waitlist" className="px-6 py-2 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-lg transition-colors">
                                     Get access
                                 </Link>
@@ -104,25 +93,7 @@ export default function Navbar() {
                                 >
                                     Blog
                                 </Link>
-                                <a
-                                    href="https://docs.kovio.dev/"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="block px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors"
-                                    onClick={() => setIsMenuOpen(false)}
-                                >
-                                    Docs
-                                </a>
                                 <div className="pt-4 space-y-2 border-t border-gray-200 mt-2">
-                                    <a
-                                        href="https://www.dashboard.kovio.dev/"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="block px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors text-center"
-                                        onClick={() => setIsMenuOpen(false)}
-                                    >
-                                        Login
-                                    </a>
                                     <Link
                                         href="/waitlist"
                                         className="block px-4 py-3 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-lg transition-colors text-center"

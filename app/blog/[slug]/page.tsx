@@ -9,6 +9,9 @@ import PortableText from '@/components/blog/portable-text';
 
 export async function generateStaticParams() {
   const slugs = await getPostSlugs();
+  if (!slugs || slugs.length === 0) {
+    return [];
+  }
   return slugs.map((slug) => ({ slug }));
 }
 
@@ -92,7 +95,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
                 Ready to Build a Profitable Ad Business?
               </h3>
               <p className="text-gray-600 mb-8 max-w-2xl mx-auto text-lg">
-                Kovio helps large publishers automate their entire ad stack with AI—managing AdMob, mediation platforms, and ad ops workflows autonomously.
+                Kovio helps large publishers automate their entire ad stack with AI - managing AdMob, mediation platforms, and ad ops workflows autonomously.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link

@@ -69,7 +69,7 @@ export default function TermsPage() {
               <section>
                 <h2 className="text-2xl font-semibold text-gray-900 mb-4">6. Limitation of Liability</h2>
                 <p className="text-gray-700 leading-relaxed">
-                  Kovio is provided "as is" without warranties of any kind. We are not liable for any revenue loss, policy violations, or account suspensions resulting from the use of our service. The AI agent operates as a tool to assist you—final responsibility rests with the account owner.
+                  Kovio is provided "as is" without warranties of any kind. We are not liable for any revenue loss, policy violations, or account suspensions resulting from the use of our service. The AI agent operates as a tool to assist you - final responsibility rests with the account owner.
                 </p>
               </section>
 

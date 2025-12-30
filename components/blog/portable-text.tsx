@@ -19,17 +19,26 @@ export default function PortableText({ value }: PortableTextProps) {
             if (!value?.asset?._ref) {
               return null;
             }
-            return (
-              <div className="my-8">
-                <Image
-                  src={urlFor(value).width(800).url()}
-                  alt={value.alt || 'Blog image'}
-                  width={800}
-                  height={400}
-                  className="rounded-xl w-full h-auto"
-                />
-              </div>
-            );
+            try {
+              const imageUrl = urlFor(value).width(800).url();
+              if (!imageUrl) {
+                return null;
+              }
+              return (
+                <div className="my-8">
+                  <Image
+                    src={imageUrl}
+                    alt={value.alt || 'Blog image'}
+                    width={800}
+                    height={400}
+                    className="rounded-xl w-full h-auto"
+                  />
+                </div>
+              );
+            } catch (error) {
+              console.error('Error rendering image:', error);
+              return null;
+            }
           },
         },
         block: {

@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Kovio | Agentic AI for Mobile Ad Operations',
-  description: 'Agentic AI that manages, operates, and optimizes your entire ad stack—AdMob, mediation platforms, and ad ops workflows—automatically.',
+  description: 'Agentic AI that manages, operates, and optimizes your entire ad stack - AdMob, mediation platforms, and ad ops workflows - automatically.',
   icons: {
     icon: '/favicon.svg',
   },

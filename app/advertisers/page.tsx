@@ -77,7 +77,7 @@ export default function AdvertisersPage() {
                     Reach High-Intent Users
                   </h2>
                   <p className="text-sm md:text-base text-gray-300 leading-relaxed">
-                    Show up inside AI assistants and chatbots, where attention is focused and intent is explicit—not lost in a feed.
+                    Show up inside AI assistants and chatbots, where attention is focused and intent is explicit - not lost in a feed.
                   </p>
                 </div>
               </div>
@@ -96,7 +96,7 @@ export default function AdvertisersPage() {
                     Contextual, AI-Powered Targeting
                   </h2>
                   <p className="text-sm md:text-base text-gray-300 leading-relaxed">
-                    Kovio matches your campaigns to live intent in conversations—no fragile keyword lists or manual rules.
+                    Kovio matches your campaigns to live intent in conversations - no fragile keyword lists or manual rules.
                   </p>
                 </div>
               </div>
