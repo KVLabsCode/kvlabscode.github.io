@@ -1,0 +1,3 @@
+# Exclude sanity-studio from Vercel builds
+sanity-studio/
+
