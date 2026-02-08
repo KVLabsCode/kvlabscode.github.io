@@ -114,7 +114,7 @@ function ArmCard({ arm, otherArm, viewMode, delay }: ArmCardProps) {
             </div>
             <div className="flex justify-between text-[10px] font-mono">
               <span className="text-muted">Confidence</span>
-              <span className="text-foreground/70">{arm.isWinner ? '94.2%' : '—'}</span>
+              <span className="text-foreground/70">{arm.isWinner ? '94.2%' : '-'}</span>
             </div>
             <div className="flex justify-between text-[10px] font-mono">
               <span className="text-muted">Samples</span>

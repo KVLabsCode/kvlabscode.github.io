@@ -63,7 +63,7 @@ export default function ExperimentHeader({ viewMode }: ExperimentHeaderProps) {
           <h2 className="text-xs sm:text-sm font-medium text-foreground">
             {experimentConfig.title}
           </h2>
-          <span className="text-[10px] sm:text-xs text-muted font-mono">— {experimentConfig.segment}</span>
+          <span className="text-[10px] sm:text-xs text-muted font-mono">· {experimentConfig.segment}</span>
         </div>
         {viewMode === 'kovio' && (
           <motion.span

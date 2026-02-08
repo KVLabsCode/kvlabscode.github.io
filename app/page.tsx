@@ -15,7 +15,7 @@ const behaviors: SystemBehavior[] = [
   },
   {
     title: 'Decides',
-    description: 'Evaluates millions of configurations and selects the optimal action — without human bottlenecks.',
+    description: 'Evaluates millions of configurations and selects the optimal action, without human bottlenecks.',
     detail: 'ML-driven waterfall, bidding, and floor price decisions',
   },
   {
@@ -52,7 +52,7 @@ export default function HomePage() {
                 </h1>
                 <p className="text-base sm:text-lg text-muted max-w-lg leading-relaxed mb-6 sm:mb-8">
                   Kovio is the operating system that observes, decides, executes, and learns
-                  across your entire monetization stack — so your team doesn&apos;t have to.
+                  across your entire monetization stack, so your team doesn&apos;t have to.
                 </p>
                 <div className="flex flex-wrap gap-4">
                   <a href="https://calendly.com/vivobusiness2001/30min" target="_blank" rel="noopener noreferrer" className="btn-primary">Request Demo</a>
@@ -96,7 +96,7 @@ export default function HomePage() {
               <p className="text-muted max-w-2xl leading-relaxed">
                 Kovio is built for publishers and agencies managing complex, multi-network
                 ad stacks. Our infrastructure connects to every major ad platform
-                and runs autonomously — so your team can focus on growth, not configuration.
+                and runs autonomously, so your team can focus on growth, not configuration.
               </p>
             </AnimatedSection>
           </div>
@@ -105,7 +105,7 @@ export default function HomePage() {
         {/* CTA */}
         <CTASection
           heading="Ready to let your stack run itself?"
-          subtext="See how Kovio operates your entire ad infrastructure — from observation to execution."
+          subtext="See how Kovio operates your entire ad infrastructure, from observation to execution."
         />
       </main>
 

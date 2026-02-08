@@ -12,7 +12,7 @@ export default function Footer() {
               <Logo />
             </div>
             <p className="text-muted text-sm leading-relaxed max-w-xs">
-              The Publisher Operating System. Observe, decide, execute, learn — across your entire ad stack.
+              The Publisher Operating System. Observe, decide, execute, learn across your entire ad stack.
             </p>
           </div>
 

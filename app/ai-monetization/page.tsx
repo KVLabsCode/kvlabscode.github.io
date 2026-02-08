@@ -8,7 +8,7 @@ import AIMonetizationContent from './content';
 
 export const metadata: Metadata = {
   title: 'AI Monetization | Kovio',
-  description: 'AI monetization as infrastructure. Intent, decisions, actions, outcomes — monetized natively through the Kovio SDK.',
+  description: 'AI monetization as infrastructure. Intent, decisions, actions, outcomes, monetized natively through the Kovio SDK.',
 };
 
 export default function AIMonetizationPage() {
@@ -30,7 +30,7 @@ export default function AIMonetizationPage() {
               </h1>
               <p className="text-base sm:text-lg text-muted leading-relaxed max-w-xl mb-3">
                 Users stopped browsing and started asking.
-                Every AI interaction is a moment of intent — the most valuable surface the internet has ever produced.
+                Every AI interaction is a moment of intent. The most valuable surface the internet has ever produced.
               </p>
               <p className="text-base sm:text-lg text-foreground/70 leading-relaxed max-w-xl">
                 Intent is not a rectangle. AI needs a new monetization layer.

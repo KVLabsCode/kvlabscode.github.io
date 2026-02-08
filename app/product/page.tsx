@@ -31,7 +31,7 @@ export default function ProductPage() {
         {/* CTA */}
         <CTASection
           heading="See Kovio in action."
-          subtext="Watch the system that runs your entire ad stack — from observation to execution."
+          subtext="Watch the system that runs your entire ad stack, from observation to execution."
         />
       </main>
 

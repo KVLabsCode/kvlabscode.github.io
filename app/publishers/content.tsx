@@ -151,7 +151,7 @@ export default function PublishersContent() {
             <div className="bg-accent/[0.06] border border-accent/20 rounded-lg px-3 sm:px-6 py-4 sm:py-5">
               <div className="flex items-center justify-center gap-2 mb-4">
                 <div className="text-accent/70">{icons.cpu}</div>
-                <span className="text-[10px] sm:text-xs font-mono text-accent uppercase tracking-wider font-medium">Kovio — Publisher Operating System</span>
+                <span className="text-[10px] sm:text-xs font-mono text-accent uppercase tracking-wider font-medium">Kovio · Publisher Operating System</span>
               </div>
               <div className="grid grid-cols-4 gap-2">
                 {['Observe', 'Decide', 'Execute', 'Learn'].map((step, i) => {

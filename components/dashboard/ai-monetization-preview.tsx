@@ -21,7 +21,7 @@ export default function AiMonetizationPreview() {
               <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-accent" />
             </div>
             <h3 className="text-xs font-semibold text-foreground uppercase tracking-wider font-mono">
-              AI Monetization — Live
+              AI Monetization · Live
             </h3>
           </div>
           <span className="text-[9px] font-mono text-muted">Active</span>

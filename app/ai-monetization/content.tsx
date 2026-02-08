@@ -279,7 +279,7 @@ export default function AIMonetizationContent() {
               AI needs an operating system.
             </h2>
             <p className="text-muted max-w-xl mb-12">
-              Kovio sits between your app and the AI stack — handling monetization so you can focus on experience.
+              Kovio sits between your app and the AI stack, handling monetization so you can focus on experience.
             </p>
           </AnimatedSection>
 
@@ -309,7 +309,7 @@ export default function AIMonetizationContent() {
               <div className="bg-accent/[0.06] border border-accent/20 rounded-lg px-3 sm:px-6 py-4 sm:py-5">
                 <div className="flex items-center justify-center gap-2 mb-4 sm:mb-5">
                   <div className="text-accent/70">{icons.cpu}</div>
-                  <span className="text-[10px] sm:text-xs font-mono text-accent uppercase tracking-wider font-medium">Kovio SDK — Monetization Runtime</span>
+                  <span className="text-[10px] sm:text-xs font-mono text-accent uppercase tracking-wider font-medium">Kovio SDK · Monetization Runtime</span>
                 </div>
                 {/* Pipeline with icons — horizontal on sm+, grid on mobile */}
                 <div className="hidden sm:flex items-center justify-center gap-1.5">
@@ -417,7 +417,7 @@ export default function AIMonetizationContent() {
 
           <AnimatedSection>
             <p className="text-muted text-sm mt-6 max-w-md mx-auto">
-              Native, contextual, measured — never interrupting, never polluting answers.
+              Native, contextual, measured. Never interrupting, never polluting answers.
             </p>
           </AnimatedSection>
         </div>

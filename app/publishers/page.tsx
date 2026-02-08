@@ -29,7 +29,7 @@ export default function PublishersPage() {
                 Autopilot for revenue.
               </h1>
               <p className="text-base sm:text-lg md:text-xl text-muted max-w-2xl leading-relaxed">
-                You already have the tools. Kovio decides how they&apos;re used — continuously,
+                You already have the tools. Kovio decides how they&apos;re used. Continuously,
                 autonomously, and at a speed no human team can match.
               </p>
             </AnimatedSection>

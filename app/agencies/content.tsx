@@ -67,7 +67,7 @@ const icons = {
 const benefits = [
   {
     title: 'One platform, many publishers',
-    description: 'Each publisher gets an isolated, autonomous stack — all managed from your single dashboard.',
+    description: 'Each publisher gets an isolated, autonomous stack. All managed from your single dashboard.',
     icon: icons.users,
     color: '#6366f1',
   },
@@ -85,7 +85,7 @@ const benefits = [
   },
   {
     title: 'Transparent reporting',
-    description: 'Every action, every decision, every outcome — logged and reportable per publisher.',
+    description: 'Every action, every decision, every outcome. Logged and reportable per publisher.',
     icon: icons.document,
     color: '#6366f1',
   },
@@ -143,7 +143,7 @@ export default function AgenciesContent() {
             </h2>
             <p className="text-muted max-w-2xl mx-auto mb-10 sm:mb-16 text-center">
               Kovio operates as a single control plane that branches into independent
-              publisher stacks — each with its own optimization model.
+              publisher stacks, each with its own optimization model.
             </p>
           </AnimatedSection>
 
@@ -289,7 +289,7 @@ export default function AgenciesContent() {
               </h3>
               <p className="text-muted leading-relaxed mb-6">
                 Kovio operates behind the scenes. Your publishers see your brand, your
-                reporting, your optimization — powered by infrastructure that scales
+                reporting, your optimization. Powered by infrastructure that scales
                 without additional headcount.
               </p>
               <div className="space-y-2.5">

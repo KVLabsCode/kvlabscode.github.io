@@ -30,7 +30,7 @@ export default function AgenciesPage() {
               </h1>
               <p className="text-base sm:text-lg md:text-xl text-muted max-w-2xl leading-relaxed">
                 Manage more publishers without adding more people. Kovio gives every
-                publisher their own autonomous stack — operated from a single control plane.
+                publisher their own autonomous stack, operated from a single control plane.
               </p>
             </AnimatedSection>
           </div>

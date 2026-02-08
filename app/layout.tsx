@@ -22,7 +22,7 @@ export const metadata: Metadata = {
         url: '/og-image.svg',
         width: 1200,
         height: 630,
-        alt: 'Kovio — The Publisher Operating System',
+        alt: 'Kovio - The Publisher Operating System',
       },
     ],
     type: 'website',
