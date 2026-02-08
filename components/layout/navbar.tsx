@@ -9,6 +9,7 @@ import type { NavTab } from '@/types';
 
 const tabs: NavTab[] = [
   { label: 'Home', href: '/' },
+  { label: 'Product', href: '/product' },
   { label: 'Publishers', href: '/publishers' },
   { label: 'Agencies', href: '/agencies' },
   { label: 'AI Monetization', href: '/ai-monetization' },
@@ -32,56 +33,48 @@ export default function Navbar() {
   }, [pathname]);
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'glass-dark' : 'bg-transparent'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+    <nav className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8 pt-3">
+      <div className="max-w-5xl mx-auto bg-surface/80 backdrop-blur-xl border border-white/[0.08] rounded-2xl px-4 sm:px-6 transition-all duration-300">
+        <div className="flex justify-between items-center h-14">
           {/* Left: Logo */}
           <Link href="/" className="flex items-center hover:opacity-80 transition-opacity">
             <Logo />
           </Link>
 
-          {/* Center: Tabs */}
-          <div className="hidden md:flex items-center gap-1 bg-white/5 rounded-lg p-1">
+          {/* Center: Nav links */}
+          <div className="hidden md:flex items-center gap-7">
             {tabs.map((tab) => {
               const isActive = pathname === tab.href;
               return (
                 <Link
                   key={tab.href}
                   href={tab.href}
-                  className={`relative px-4 py-2 text-sm font-medium rounded-md transition-colors ${
+                  className={`relative text-sm font-medium transition-colors ${
                     isActive
                       ? 'text-white'
                       : 'text-muted hover:text-foreground'
                   }`}
                 >
+                  {tab.label}
                   {isActive && (
                     <motion.div
                       layoutId="activeTab"
-                      className="absolute inset-0 bg-white/10 rounded-md"
+                      className="absolute -bottom-1 left-0 right-0 h-px bg-accent"
                       transition={{ type: 'spring', bounce: 0.2, duration: 0.5 }}
                     />
                   )}
-                  <span className="relative z-10">{tab.label}</span>
                 </Link>
               );
             })}
           </div>
 
-          {/* Right: Buttons */}
-          <div className="hidden md:flex items-center gap-3">
+          {/* Right: Button */}
+          <div className="hidden md:flex items-center">
             <Link
-              href="#"
-              className="px-5 py-2.5 border border-foreground/20 hover:border-foreground/40 text-foreground text-sm font-semibold rounded-lg transition-all"
-            >
-              Sign In
-            </Link>
-            <Link
-              href="#"
-              className="px-5 py-2.5 bg-accent hover:bg-accent-hover text-white text-sm font-semibold rounded-lg transition-all"
+              href="https://calendly.com/vivobusiness2001/30min"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-4 py-2 bg-accent hover:bg-accent-hover text-white text-sm font-semibold rounded-lg transition-all"
             >
               Request Demo
             </Link>
@@ -89,7 +82,7 @@ export default function Navbar() {
 
           {/* Mobile hamburger */}
           <button
-            className="md:hidden text-foreground hover:text-white"
+            className="md:hidden text-foreground hover:text-white p-2 -mr-2 min-h-[44px] min-w-[44px] flex items-center justify-center touch-manipulation"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -112,7 +105,7 @@ export default function Navbar() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2 }}
-            className="md:hidden glass-dark overflow-hidden"
+            className="md:hidden max-w-5xl mx-auto mt-2 bg-surface/95 backdrop-blur-xl border border-white/[0.08] rounded-2xl overflow-hidden"
           >
             <div className="px-4 py-4 space-y-1">
               {tabs.map((tab) => {
@@ -121,7 +114,7 @@ export default function Navbar() {
                   <Link
                     key={tab.href}
                     href={tab.href}
-                    className={`block px-4 py-3 rounded-lg transition-colors text-sm font-medium ${
+                    className={`block px-4 py-3 rounded-lg transition-colors text-sm font-medium min-h-[44px] flex items-center touch-manipulation ${
                       isActive
                         ? 'bg-white/10 text-white'
                         : 'text-muted hover:text-foreground hover:bg-white/5'
@@ -133,13 +126,9 @@ export default function Navbar() {
               })}
               <div className="pt-4 space-y-2 border-t border-white/10 mt-2">
                 <Link
-                  href="#"
-                  className="block px-4 py-3 border border-foreground/20 text-foreground text-sm font-semibold rounded-lg text-center"
-                >
-                  Sign In
-                </Link>
-                <Link
-                  href="#"
+                  href="https://calendly.com/vivobusiness2001/30min"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="block px-4 py-3 bg-accent text-white text-sm font-semibold rounded-lg text-center"
                 >
                   Request Demo

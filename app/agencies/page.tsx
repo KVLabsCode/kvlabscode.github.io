@@ -18,17 +18,17 @@ export default function AgenciesPage() {
 
       <main className="min-h-screen">
         {/* Hero */}
-        <section className="relative pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden">
+        <section className="relative pt-24 pb-12 sm:pt-32 sm:pb-20 md:pt-44 md:pb-32 overflow-hidden">
           <AmbientBackground />
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <AnimatedSection>
               <p className="text-accent font-mono text-sm tracking-wider uppercase mb-6">
                 For Agencies
               </p>
-              <h1 className="text-display-xl font-bold text-foreground mb-6">
+              <h1 className="text-3xl sm:text-display-lg lg:text-display-xl font-bold text-foreground mb-4 sm:mb-6">
                 Leverage without headcount.
               </h1>
-              <p className="text-xl text-muted max-w-2xl leading-relaxed">
+              <p className="text-base sm:text-lg md:text-xl text-muted max-w-2xl leading-relaxed">
                 Manage more publishers without adding more people. Kovio gives every
                 publisher their own autonomous stack — operated from a single control plane.
               </p>

@@ -8,7 +8,7 @@ import AIMonetizationContent from './content';
 
 export const metadata: Metadata = {
   title: 'AI Monetization | Kovio',
-  description: 'Monetize AI — embedded, contextual, automated. Turning AI into revenue for publishers.',
+  description: 'AI monetization as infrastructure. Intent, decisions, actions, outcomes — monetized natively through the Kovio SDK.',
 };
 
 export default function AIMonetizationPage() {
@@ -17,20 +17,23 @@ export default function AIMonetizationPage() {
       <Navbar />
 
       <main className="min-h-screen">
-        {/* Hero */}
-        <section className="relative pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden">
+        {/* Hero — tight, punchy */}
+        <section className="relative pt-24 pb-12 md:pt-44 md:pb-24 overflow-hidden">
           <AmbientBackground />
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <AnimatedSection>
-              <p className="text-accent font-mono text-sm tracking-wider uppercase mb-6">
+              <p className="text-accent font-mono text-xs sm:text-sm tracking-wider uppercase mb-6 sm:mb-8">
                 AI Monetization
               </p>
-              <h1 className="text-display-xl font-bold text-foreground mb-6">
-                Turning AI into revenue.
+              <h1 className="text-display-lg sm:text-display-xl font-bold text-foreground mb-5 sm:mb-6">
+                Intent is the new impression.
               </h1>
-              <p className="text-xl text-muted max-w-2xl leading-relaxed">
-                Monetize AI — embedded, contextual, automated. Kovio transforms AI interactions
-                into revenue streams without degrading the user experience.
+              <p className="text-base sm:text-lg text-muted leading-relaxed max-w-xl mb-3">
+                Users stopped browsing and started asking.
+                Every AI interaction is a moment of intent — the most valuable surface the internet has ever produced.
+              </p>
+              <p className="text-base sm:text-lg text-foreground/70 leading-relaxed max-w-xl">
+                Intent is not a rectangle. AI needs a new monetization layer.
               </p>
             </AnimatedSection>
           </div>
@@ -39,8 +42,8 @@ export default function AIMonetizationPage() {
         <AIMonetizationContent />
 
         <CTASection
-          heading="Monetize AI the right way."
-          subtext="See how Kovio turns AI interactions into sustainable revenue."
+          heading="See AI monetization as infrastructure."
+          subtext="Request a demo or explore the Kovio sandbox."
         />
       </main>
 

@@ -1,8 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import Image from 'next/image';
 import type { PlatformNode as PlatformNodeType } from '@/types';
 
 interface PlatformNodeProps {
@@ -10,10 +8,15 @@ interface PlatformNodeProps {
   x: number;
   y: number;
   color: string;
+  orbitSpeed: number;
+  cx: number;
+  cy: number;
 }
 
-export default function PlatformNode({ node, x, y, color }: PlatformNodeProps) {
+export default function PlatformNode({ node, x, y, color, orbitSpeed }: PlatformNodeProps) {
   const [isHovered, setIsHovered] = useState(false);
+  const size = isHovered ? 22 : 18;
+  const imgSize = size * 2;
 
   return (
     <g
@@ -22,26 +25,38 @@ export default function PlatformNode({ node, x, y, color }: PlatformNodeProps) {
       onMouseLeave={() => setIsHovered(false)}
       style={{ cursor: 'pointer' }}
     >
-      {/* Dot */}
-      <circle r={isHovered ? 6 : 4} fill={color} opacity={isHovered ? 1 : 0.7}>
-        <animate attributeName="opacity" values={isHovered ? '1;1' : '0.5;0.8;0.5'} dur="3s" repeatCount="indefinite" />
-      </circle>
+      <g>
+        <animateTransform
+          attributeName="transform"
+          type="rotate"
+          from="360 0 0"
+          to="0 0 0"
+          dur={`${orbitSpeed}s`}
+          repeatCount="indefinite"
+        />
 
-      {/* Hover glow */}
-      {isHovered && (
-        <circle r="20" fill={color} opacity="0.15" />
-      )}
+        <circle r={size + 4} fill={color} opacity={isHovered ? 0.12 : 0.05} />
 
-      {/* Label on hover */}
-      {isHovered && (
-        <foreignObject x="-40" y="12" width="80" height="30">
-          <div className="flex items-center justify-center">
-            <span className="text-xs text-foreground bg-surface/90 px-2 py-0.5 rounded whitespace-nowrap border border-white/10">
-              {node.name}
-            </span>
-          </div>
+        <foreignObject x={-size} y={-size} width={imgSize} height={imgSize}>
+          <img
+            src={node.logo}
+            alt={node.name}
+            width={imgSize}
+            height={imgSize}
+            style={{ objectFit: 'contain' }}
+          />
         </foreignObject>
-      )}
+
+        {isHovered && (
+          <foreignObject x="-60" y={size + 6} width="120" height="24">
+            <div className="flex items-center justify-center">
+              <span className="text-[10px] text-foreground bg-surface/95 px-2 py-0.5 rounded whitespace-nowrap border border-white/10 shadow-lg">
+                {node.name}
+              </span>
+            </div>
+          </foreignObject>
+        )}
+      </g>
     </g>
   );
 }

@@ -1,19 +1,13 @@
 import type { PlatformNode } from '@/types';
 
 export const platforms: PlatformNode[] = [
-  // Ad Servers
-  { id: 'admob', name: 'AdMob', logo: '/logos/admob-logo.svg', category: 'ad-servers' },
-  { id: 'applovin', name: 'AppLovin', logo: '/logos/applovin-logo.svg', category: 'ad-servers' },
+  // Inner orbit — Mediation platforms
+  { id: 'admob', name: 'Google AdMob', logo: '/logos/admob-icon.svg', category: 'ad-servers' },
+  { id: 'applovin', name: 'AppLovin MAX', logo: '/logos/applovin-icon.svg', category: 'ad-servers' },
 
-  // Demand Sources
-  { id: 'unity', name: 'Unity Ads', logo: '/logos/unity-logo.svg', category: 'demand' },
-  { id: 'chartboost', name: 'Chartboost', logo: '/logos/chartboost-logo.svg', category: 'demand' },
-
-  // Programmatic
-  { id: 'ironsource', name: 'ironSource', logo: '/logos/ironsource-logo.svg', category: 'programmatic' },
-
-  // Measurement
-  { id: 'vungle', name: 'Vungle', logo: '/logos/vungle-logo.svg', category: 'measurement' },
+  // Outer orbit — Demand sources
+  { id: 'ironsource', name: 'ironSource (LevelPlay)', logo: '/logos/ironsource-icon.svg', category: 'demand' },
+  { id: 'gam', name: 'Google Ad Manager', logo: '/logos/gam-icon.svg', category: 'demand' },
 ];
 
 export const categoryLabels: Record<PlatformNode['category'], string> = {

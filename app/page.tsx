@@ -37,25 +37,25 @@ export default function HomePage() {
 
       <main className="min-h-screen">
         {/* Hero */}
-        <section className="relative pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden">
+        <section className="relative pt-24 pb-12 sm:pt-32 sm:pb-20 md:pt-44 md:pb-32 overflow-hidden">
           <AmbientBackground />
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
               <AnimatedSection>
                 <p className="text-accent font-mono text-sm tracking-wider uppercase mb-6">
                   The Publisher Operating System
                 </p>
-                <h1 className="text-display-xl font-bold text-foreground mb-6">
+                <h1 className="text-3xl sm:text-display-lg lg:text-display-xl font-bold text-foreground mb-4 sm:mb-6">
                   Your ad stack,
                   <br />
                   on autopilot.
                 </h1>
-                <p className="text-lg text-muted max-w-lg leading-relaxed mb-8">
+                <p className="text-base sm:text-lg text-muted max-w-lg leading-relaxed mb-6 sm:mb-8">
                   Kovio is the operating system that observes, decides, executes, and learns
                   across your entire monetization stack — so your team doesn&apos;t have to.
                 </p>
                 <div className="flex flex-wrap gap-4">
-                  <a href="#" className="btn-primary">Request Demo</a>
+                  <a href="https://calendly.com/vivobusiness2001/30min" target="_blank" rel="noopener noreferrer" className="btn-primary">Request Demo</a>
                   <a href="#behaviors" className="btn-secondary">How it works</a>
                 </div>
               </AnimatedSection>
@@ -68,14 +68,14 @@ export default function HomePage() {
         </section>
 
         {/* Behaviors */}
-        <section id="behaviors" className="py-24 md:py-32">
+        <section id="behaviors" className="py-16 sm:py-24 md:py-32">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <AnimatedSection>
               <p className="text-accent font-mono text-sm tracking-wider uppercase mb-4">System Behaviors</p>
-              <h2 className="text-display font-bold text-foreground mb-4">
+              <h2 className="text-2xl sm:text-display font-bold text-foreground mb-4">
                 Not features. Behaviors.
               </h2>
-              <p className="text-muted max-w-2xl mb-16">
+              <p className="text-muted max-w-2xl mb-10 sm:mb-16">
                 Kovio doesn&apos;t give you more buttons to press. It operates your ad stack
                 as a continuous, autonomous system.
               </p>
@@ -86,11 +86,11 @@ export default function HomePage() {
         </section>
 
         {/* Credibility */}
-        <section className="py-24 md:py-32 border-t border-white/5">
+        <section className="py-16 sm:py-24 md:py-32 border-t border-white/5">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <AnimatedSection>
               <p className="text-accent font-mono text-sm tracking-wider uppercase mb-4">Built for Scale</p>
-              <h2 className="text-display font-bold text-foreground mb-6">
+              <h2 className="text-2xl sm:text-display font-bold text-foreground mb-6">
                 Trusted by publishers who move fast.
               </h2>
               <p className="text-muted max-w-2xl leading-relaxed">

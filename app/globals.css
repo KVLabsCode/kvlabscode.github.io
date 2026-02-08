@@ -30,6 +30,8 @@ a {
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 80px;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 /* Dark scrollbar */
@@ -90,11 +92,23 @@ html {
   background: radial-gradient(ellipse at center, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
 }
 
-/* Buttons */
+/* Buttons — 44px min touch target for mobile accessibility */
 .btn-primary {
-  @apply px-8 py-3 bg-accent hover:bg-accent-hover text-white font-semibold rounded-lg transition-all duration-300 min-h-[44px] touch-manipulation;
+  @apply px-6 sm:px-8 py-3 bg-accent hover:bg-accent-hover text-white font-semibold rounded-lg transition-all duration-300 min-h-[44px] touch-manipulation text-sm sm:text-base;
 }
 
 .btn-secondary {
-  @apply px-8 py-3 border border-foreground/20 hover:border-foreground/40 text-foreground font-semibold rounded-lg transition-all duration-300 min-h-[44px] touch-manipulation;
+  @apply px-6 sm:px-8 py-3 border border-foreground/20 hover:border-foreground/40 text-foreground font-semibold rounded-lg transition-all duration-300 min-h-[44px] touch-manipulation text-sm sm:text-base;
+}
+
+/* Mobile-specific: safe areas for notched devices */
+@supports (padding: env(safe-area-inset-bottom)) {
+  footer {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+/* Horizontal scroll containers on mobile */
+.overflow-x-auto {
+  -webkit-overflow-scrolling: touch;
 }
