@@ -1,13 +1,14 @@
 import type { Metadata, Viewport } from 'next';
-import { Inter } from 'next/font/google';
+import { Inter, JetBrains_Mono } from 'next/font/google';
 import Script from 'next/script';
 import './globals.css';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
+const jetbrains = JetBrains_Mono({ subsets: ['latin'], variable: '--font-mono' });
 
 export const metadata: Metadata = {
-  title: 'Kovio | Agentic AI for Mobile Ad Operations',
-  description: 'Agentic AI that manages, operates, and optimizes your entire ad stack - AdMob, mediation platforms, and ad ops workflows - automatically.',
+  title: 'Kovio | The Publisher OS',
+  description: 'The operating system for publisher monetization. Kovio observes, decides, executes, and learns across your entire ad stack.',
   icons: {
     icon: '/favicon.svg',
   },
@@ -26,7 +27,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className} suppressHydrationWarning>
+      <body className={`${inter.variable} ${jetbrains.variable} font-sans grain-overlay`} suppressHydrationWarning>
         {children}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-65LTH5JML5"

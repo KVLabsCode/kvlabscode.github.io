@@ -2,60 +2,52 @@ import type { Config } from "tailwindcss";
 
 const config: Config = {
     content: [
-        "./pages/**/*.{js,ts,jsx,tsx,mdx}",
         "./components/**/*.{js,ts,jsx,tsx,mdx}",
         "./app/**/*.{js,ts,jsx,tsx,mdx}",
     ],
     theme: {
         extend: {
             colors: {
-                background: "var(--background)",
-                foreground: "var(--foreground)",
-                primary: {
-                    50: '#f0f9ff',
-                    100: '#e0f2fe',
-                    200: '#bae6fd',
-                    300: '#7dd3fc',
-                    400: '#38bdf8',
-                    500: '#0ea5e9',
-                    600: '#0284c7',
-                    700: '#0369a1',
-                    800: '#075985',
-                    900: '#0c4a6e',
-                },
+                background: '#0a0a0c',
+                surface: '#111114',
+                foreground: '#e0e0e6',
+                muted: '#8b8b9e',
+                border: '#1e1e24',
                 accent: {
-                    50: '#fdf4ff',
-                    100: '#fae8ff',
-                    200: '#f5d0fe',
-                    300: '#f0abfc',
-                    400: '#e879f9',
-                    500: '#d946ef',
-                    600: '#c026d3',
-                    700: '#a21caf',
-                    800: '#86198f',
-                    900: '#701a75',
+                    DEFAULT: '#6366f1',
+                    hover: '#818cf8',
+                    muted: 'rgba(99, 102, 241, 0.15)',
                 },
             },
             fontFamily: {
                 sans: ['Inter', 'system-ui', 'sans-serif'],
+                mono: ['JetBrains Mono', 'monospace'],
+            },
+            fontSize: {
+                'display-xl': ['4.5rem', { lineHeight: '1', letterSpacing: '-0.03em' }],
+                'display-lg': ['3.5rem', { lineHeight: '1.05', letterSpacing: '-0.025em' }],
+                'display': ['2.5rem', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
             },
             animation: {
-                'fade-in': 'fadeIn 0.5s ease-in',
-                'slide-up': 'slideUp 0.5s ease-out',
-                'glow': 'glow 2s ease-in-out infinite alternate',
+                'grain': 'grain 8s steps(10) infinite',
+                'ambient-pulse': 'ambient-pulse 4s ease-in-out infinite',
             },
             keyframes: {
-                fadeIn: {
-                    '0%': { opacity: '0' },
-                    '100%': { opacity: '1' },
+                grain: {
+                    '0%, 100%': { transform: 'translate(0, 0)' },
+                    '10%': { transform: 'translate(-5%, -10%)' },
+                    '20%': { transform: 'translate(-15%, 5%)' },
+                    '30%': { transform: 'translate(7%, -25%)' },
+                    '40%': { transform: 'translate(-5%, 25%)' },
+                    '50%': { transform: 'translate(-15%, 10%)' },
+                    '60%': { transform: 'translate(15%, 0%)' },
+                    '70%': { transform: 'translate(0%, 15%)' },
+                    '80%': { transform: 'translate(3%, 35%)' },
+                    '90%': { transform: 'translate(-10%, 10%)' },
                 },
-                slideUp: {
-                    '0%': { transform: 'translateY(20px)', opacity: '0' },
-                    '100%': { transform: 'translateY(0)', opacity: '1' },
-                },
-                glow: {
-                    '0%': { boxShadow: '0 0 5px rgba(14, 165, 233, 0.5)' },
-                    '100%': { boxShadow: '0 0 20px rgba(14, 165, 233, 0.8)' },
+                'ambient-pulse': {
+                    '0%, 100%': { opacity: '0.4' },
+                    '50%': { opacity: '0.7' },
                 },
             },
         },
