@@ -11,6 +11,27 @@ export const metadata: Metadata = {
   description: 'The operating system for publisher monetization. Kovio observes, decides, executes, and learns across your entire ad stack.',
   icons: {
     icon: '/favicon.svg',
+    apple: '/favicon.svg',
+  },
+  openGraph: {
+    title: 'Kovio | The Publisher OS',
+    description: 'The operating system for publisher monetization. Kovio observes, decides, executes, and learns across your entire ad stack.',
+    siteName: 'Kovio',
+    images: [
+      {
+        url: '/og-image.svg',
+        width: 1200,
+        height: 630,
+        alt: 'Kovio — The Publisher Operating System',
+      },
+    ],
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Kovio | The Publisher OS',
+    description: 'The operating system for publisher monetization. Kovio observes, decides, executes, and learns across your entire ad stack.',
+    images: ['/og-image.svg'],
   },
 };
 
